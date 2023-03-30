@@ -10,8 +10,10 @@ const consents = () => {
     <div className="homeContainer">
       <Navbar />
       <div className="listContainer">
-                    <div className="listTitle"></div>
-                        <VerifyConsentForm />
+                    <div className="listTitle">
+                    <VerifyConsentForm />
+
+                    </div>
                     </div>
     </div>
   </div>

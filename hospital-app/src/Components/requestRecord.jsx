@@ -11,8 +11,10 @@ const consents = () => {
     <div className="homeContainer">
       <Navbar />
       <div className="listContainer">
-                    <div className="listTitle"></div>
-                        <RequestRecordForm />
+                    <div className="listTitle">
+                    <RequestRecordForm />
+
+                    </div>
                         {/* <RequestRecordTable/> */}
                     </div>
                    
