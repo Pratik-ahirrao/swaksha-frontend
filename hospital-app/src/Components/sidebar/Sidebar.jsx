@@ -15,6 +15,8 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import HealthAndSafetyOutlinedIcon from '@mui/icons-material/HealthAndSafetyOutlined';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
@@ -39,17 +41,23 @@ const Sidebar = () => {
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
-              <span className='dashlist'>My records</span>
+              <span className='dashlist'>Patient Records</span>
             </li>
           </Link>
         
-          <Link to="/consents" style={{ textDecoration: "none" }}>
+          <Link to="/requestData" style={{ textDecoration: "none" }}>
             <li>
-            <CreditCardIcon className="icon" />
-            <span className='dashlist'>Consents</span>
+            <AccessibilityIcon className="icon" />
+            <span className='dashlist'>Request Records</span>
             </li>
           </Link>
           
+          <Link to="/verifyConsent" style={{ textDecoration: "none" }}>
+            <li>
+            <SafetyCheckIcon className="icon" />
+            <span className='dashlist'>Verify Consents</span>
+            </li>
+          </Link>
           
           
           <p className="title">USER</p>

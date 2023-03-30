@@ -4,7 +4,9 @@
 patient-app/node_modules
 patient-app/.pnp
 patient-app/.pnp.js
-
+hospital-app/node_modules
+hospital-app/.pnp
+hospital-app/.pnp.js
 # testing
 /coverage
 
