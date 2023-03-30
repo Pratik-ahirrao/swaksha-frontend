@@ -124,7 +124,7 @@ export default function FormPropsTextFields() {
       </div>
       <div className="approveButton">
 
-      <Button variant="contained" onClick={routeToDashboard}>Update</Button>
+      <Button variant="contained" onClick={routeToDashboard}>Save Changes</Button>
       </div>
       
 
