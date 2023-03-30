@@ -53,11 +53,14 @@ const Sidebar = () => {
           
           
           <p className="title">USER</p>
-          <li>
+          
+          <Link to="/profile" style={{ textDecoration: "none" }}>
+            <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span className='dashlist'>Profile</span>
-          </li>
-          
+            </li>
+          </Link>
+
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
             <ExitToAppIcon className="icon" />

@@ -6,6 +6,7 @@ import OTP from './Components/otp';
 import Dashboard from './Components/dashboard';
 import Consent from './Components/consents';
 import ApproveConsent from './Components/approveConsent';
+import Profile from './Components/profile'
 function App() {
   return (
     <div className="App">
@@ -17,7 +18,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />}/>
       <Route path="/consents" element={<Consent />}/>
       <Route path="/approveConsent" element={<ApproveConsent />}/>
-
+      <Route path="/profile" element={<Profile />}/>
       </Routes>
       </BrowserRouter>
     </div>
