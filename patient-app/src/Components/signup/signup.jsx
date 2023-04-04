@@ -2,19 +2,38 @@ import React from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import './signup.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+// import {useHistory} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function App(){
     let navigate = useNavigate(); 
-
     const routeToLogin = () =>{ 
         let path = `/`; 
         navigate(path);
       }
 
-      const routeToVerifyOtp = () =>{ 
+      const API_URL = "http://localhost:9005/api/v1/auth/send-otp";
+      const routeToVerifyOtp = (e) =>{ 
+        axios.post(
+          API_URL, {
+            "phone_number":e.phone_number
+          } 
+        ).then(()=>
+        {
         let path = `/verifyOtp`; 
-        navigate(path);
-      }
+        <Redirect 
+          to= {{
+            pathname: "/",
+            state: {data:{
+              "first_name": 
+            }}
+          }}
+        />
+        
+        
+      })
+    }
     return (
         <div className='outer' >
             <div className="wrapper">
@@ -23,37 +42,37 @@ function App(){
           <div className="user-details">
             <div className="input-box">
               <span className="details">First Name</span>
-              <input type="text" placeholder="Enter your First name" required />
+              <input type="text" placeholder="Enter your First name" name='first_name' required />
             </div>
             <div className="input-box">
               <span className="details">Last Name</span>
-              <input type="text" placeholder="Enter your Last name" required />
+              <input type="text" placeholder="Enter your Last name" name='last_name' required />
             </div>
             <div className="input-box">
               <span className="details">E-Mail</span>
-              <input type="email" placeholder="Enter your email" required />
+              <input type="email" placeholder="Enter your email" name='email' required />
             </div>
             <div className="input-box">
               <span className="details">Phone Number</span>
-              <input type="number" placeholder="Enter your number" required />
+              <input type="number" placeholder="Enter your number" name='phone_number' required />
             </div>
 
             <div className="input-box">
               <span className="details">Address</span>
-              <input type="text" placeholder="Enter your Address" required />
+              <input type="text" placeholder="Enter your Address" name='address' required />
             </div>
             <div className="input-box">
               <span className="details">City</span>
-              <input type="text" placeholder="Enter your City" required />
+              <input type="text" placeholder="Enter your City"  name='city'required />
             </div> 
             <div className="input-box">
               <span className="details">State</span>
-              <input type="text" placeholder="Enter your State" required />
+              <input type="text" placeholder="Enter your State" name='state' required />
             </div>
 
             <div className="input-box">
               <span className="details">DOB</span>
-              <input type="date"  required />
+              <input type="date" name='date' required />
             </div>
             
             <div className="input-box">
@@ -67,11 +86,11 @@ function App(){
 
             <div className="input-box">
               <span className="details">Password</span>
-              <input type="password" placeholder="Enter your Password" required />
+              <input type="password" placeholder="Enter your Password" name='password' required />
             </div>
             <div className="input-box">
               <span className="details">Confirm Password</span>
-              <input type="password" placeholder="Confirm your Password" required />
+              <input type="password" placeholder="Confirm your Password" name='confirm_password' required />
             </div>
           </div>
           <div className="gender-details">
