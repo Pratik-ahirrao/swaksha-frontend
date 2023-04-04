@@ -1,12 +1,12 @@
-import Login from './login';
+import Login from './Components/login/login';
 import { BrowserRouter, Route, Switch, Link,Routes } from "react-router-dom";
-import Signup from './Components/signup';
+import Signup from './Components/signup/signup';
 import VerifyOtp from './Components/verifyOtp';
 import OTP from './Components/otp';
 import Dashboard from './Components/dashboard';
 import Consent from './Components/consents';
 import ApproveConsent from './Components/approveConsent';
-import Profile from './Components/profile'
+import Profile from './Components/profile';
 function App() {
   return (
     <div className="App">

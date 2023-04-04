@@ -1,7 +1,7 @@
 import React from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import './login.css';
-import img from './hospital.jpg';
+import img from './hospital2.jpg';
 import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       <MDBRow>
 
         <MDBCol col='10' md='5'>
-          <img src={img} class="img-fluid" alt="Sample image" />
+          <img src={img} class="img-fluid" alt="Sample image" width={500} />
         </MDBCol>
         
         <MDBCol col='4' md='5' >

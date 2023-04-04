@@ -17,6 +17,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import HealthAndSafetyOutlinedIcon from '@mui/icons-material/HealthAndSafetyOutlined';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import Divider from '@mui/material/Divider';
 
 const Sidebar = () => {
 //   const { dispatch } = useContext(DarkModeContext);
@@ -35,6 +36,8 @@ const Sidebar = () => {
             <DashboardIcon className="icon" />
             <span className='dashlist'>Dashboard</span>
           </li>
+          <Divider />
+
           <p className="title">LISTS</p>
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
@@ -50,7 +53,8 @@ const Sidebar = () => {
             </li>
           </Link>
           
-          
+          <Divider />
+
           
           <p className="title">USER</p>
           

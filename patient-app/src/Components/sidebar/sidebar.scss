@@ -13,7 +13,9 @@
       .logo {
         font-size: 20px;
         font-weight: bold;
-        color: #6439ff;
+        // color: #6439ff;
+        color: linear-gradient(135deg, #71B7E6, #9B59B6);
+
       }
     }
   
@@ -32,13 +34,16 @@
         .title {
           font-size: 15px;
           font-weight: bold;
-          color: #999;
+          color:  #999;
           margin-top: 15px;
           margin-bottom: 5px;
         }
   
         .dashlist{
             font-size: 15px;
+            font-family: sans-serif;
+            // color: #454545;
+          
         }
         li {
           display: flex;
@@ -52,7 +57,7 @@
   
           .icon {
             font-size: 18px;
-            color: #7451f8;
+            color: linear-gradient(135deg, #71B7E6, #9B59B6);
           }
   
           span{
@@ -85,7 +90,7 @@
                 background-color: #333;
             }
             &:nth-child(3){
-                background-color: darkblue;
+                background-color: linear-gradient(135deg, #71B7E6, #9B59B6);;
             }
         }
     }

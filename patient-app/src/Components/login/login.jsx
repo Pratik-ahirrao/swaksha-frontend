@@ -2,7 +2,7 @@ import React from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import './login.css';
 import img from './patient.jpg';
-import img1 from './logo1.png';
+// import img1 from './logo1.png';
 import { useNavigate } from "react-router-dom";
 
 function App() {
