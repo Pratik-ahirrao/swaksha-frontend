@@ -1,11 +1,29 @@
 import React from 'react';
-import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+// import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import './signup.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 // import {useHistory} from "react-router-dom";
-import { redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useState } from 'react';
+
+
+function useRadioButtons(name) {
+  const [value, setState] = useState(null);
+
+  const handleChange = e => {
+    setState(e.target.value);
+  };
+
+  const inputProps = {
+    name,
+    type: "radio",
+    onChange: handleChange
+  };
+
+  return [value, inputProps];
+}
+
 function App(){
     let [name,setName]=useState("");
     let [lastName, setLastName] = useState("");
@@ -19,7 +37,9 @@ function App(){
     let [cmPinConfirmPassword, setcmPinConfirmPassword] = useState("");
     let [password, setPassword] = useState("");
     let [confirmPassword, setconfirmPassword] = useState("");
-    let [gender, setGender] = useState("");
+    // let [gender, setGender] = useState("");
+    const [genderValue, genderInputProps] = useRadioButtons("gender");
+
 
     let navigate = useNavigate(); 
     // data:{
@@ -58,37 +78,42 @@ function App(){
           "cm_pin_confirm_password": cmPinConfirmPassword,
           "password": password,
           "confirm_password": confirmPassword,
-          "gender": gender
+          "gender": genderValue
         }
-        console.log(dat)
-        /*axios.post(
-          API_URL, {
-            "phone_number":e.phone_number
-          } 
-        ).then(()=>
-        {
-        let path = `/verifyOtp`; 
-        <redirect 
-          to= {{
-            pathname: "/",
-            state: {data:{
-              "first_name": e.first_name,
-              "last_name": e.last_name,
-              "email": e.email,
-              "phone_number": e.phone_number,
-              "address": e.address,
-              "city": e.city,
-              "state": e.state,
-              "date": e.date,
-              "cm_pin_password": e.cm_pin_password,
-              "cm_pin_confirm_password": e.cm_pin_confirm_password,
-              "gender": e.gender
-            }}
-          }}
-        />
+         console.log(dat)
+        // axios.post(
+        //   API_URL, {
+        //     "phone_number":e.phone_number
+        //   } 
+        // ).then(()=>
+        // {
+        let path = `/verifyotp`; 
+        navigate(path, {state: 
+         dat
+        }
+        );
+        // <Navigate 
+     
+        //   to= {{
+        //     pathname: path,
+        //     state: {data:{
+        //       "first_name": e.first_name,
+        //       "last_name": e.last_name,
+        //       "email": e.email,
+        //       "phone_number": e.phone_number,
+        //       "address": e.address,
+        //       "city": e.city,
+        //       "state": e.state,
+        //       "date": e.date,
+        //       "cm_pin_password": e.cm_pin_password,
+        //       "cm_pin_confirm_password": e.cm_pin_confirm_password,
+        //       "gender": e.gender
+        //     }}
+        //   }}
+        // />
         
         
-      })*/
+      
     }
     return (
         <div className='outer' >
@@ -150,9 +175,9 @@ function App(){
             </div>
           </div>
           <div className="gender-details">
-            <input type="radio" name="gender"  onChange={(e)=>{setGender(e.target.value)}} id="dot-1" />
-            <input type="radio" name="gender" onChange={(e)=>{setGender(e.target.value)}}  id="dot-2" />
-            <input type="radio" name="gender" onChange={(e)=>{setGender(e.target.value)}}  id="dot-3" />
+            <input type="radio" name="gender" value="Male" checked={genderValue=="Male"} {...genderInputProps} id="dot-1" />
+            <input type="radio" name="gender" value="Female" checked={genderValue=="Female"} {...genderInputProps} id="dot-2" />
+            <input type="radio" name="gender" value="Prefer Not to say" checked={genderValue=="Prefer Not to say"} {...genderInputProps}  id="dot-3" />
             <span className="gender-title">Gender</span>
             <div className="category">
               <label htmlFor="dot-1">
