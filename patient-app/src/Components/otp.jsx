@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import img from '../framework-logo.png';
 import './otp.css';
 import { height } from '@mui/system';
+import { setAuthToken } from './setAuthToken';
 function App() {
     let navigate = useNavigate(); 
     const location = useLocation();
@@ -23,13 +24,15 @@ function App() {
     const routeToDashboard = (e) =>{ 
         registerationDetails.otp=otp.join("");
         console.log(registerationDetails);
-        // axios.post("http://localhost:9005/api/v1/auth/verify-otp",{
-        // registerationDetails
-        // }).then(()=>{
-        //   let path = `/dashboard`; 
-        //   navigate(path);
-        // }
-        // )
+        axios.post("http://localhost:9005/api/v1/auth/verify-otp",
+        registerationDetails
+        ).then((resp)=>{
+          let path = `/dashboard`; 
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          setAuthToken(resp.data.token);
+          navigate(path);
+        }
+        )
         
        
       }

@@ -3,19 +3,39 @@ import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } f
 import './login.css';
 import img from './patient.jpg';
 // import img1 from './logo1.png';
-import { useNavigate } from "react-router-dom";
-
+import { Navigate,useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from 'react';
+import "../setAuthToken.js";
+import { setAuthToken } from '../setAuthToken.js';
 function App() {
     let navigate = useNavigate(); 
-
+    let [ssid,setssid]=useState("");
+    let [password, setpassword] = useState("");
     const routeToSignup = () =>{ 
         let path = `/signup`; 
         navigate(path);
       }
 
-      const routeToDashboard = () =>{ 
-        let path = `/dashboard`; 
-        navigate(path);
+      const routeToDashboard = (e) =>{ 
+        e.preventDefault();
+        const dat =  {
+          "ssid": ssid,
+          "password": password,
+        }
+        console.log(dat);
+        axios.post("http://localhost:9005/api/v1/auth/authenticate",
+        dat
+        ).then((resp)=>{
+          console.log(resp)
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          setAuthToken(resp.data.token);
+          let path = '/dashboard'; 
+
+          navigate(path);
+        }
+        )
+        
       }
   return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
@@ -23,12 +43,12 @@ function App() {
       <MDBRow>
 
         <MDBCol col='10' md='5'>
-          <img src={img} class="img-fluid" alt="Sample image" />
+          <img src={img} className="img-fluid" alt="Sample image" />
         </MDBCol>
         
         <MDBCol col='4' md='5' >
 
-          <div className="d-flex flex-row align-items-center justify-content-center" id='main' paddingLeft="50px">
+          <div className="d-flex flex-row align-items-center justify-content-center" id='main' styles={{paddingLeft:"50px"}}>
           {/* <img src={img1} class="img-fluid" alt="Sample image" /> */}
 
             <p className="lead fw-normal mb-0 me-3" id='signin'>Log in with</p>
@@ -50,8 +70,8 @@ function App() {
           {/* <div className="divider d-flex align-items-center my-4">
             <p className="text-center fw-bold mx-3 mb-0">Or</p>
           </div> */}
-          <MDBInput wrapperClass='mb-4' label='ABHA ID' id='formControlLg' type='email' size="lg" />
-          <MDBInput wrapperClass='mb-4' label='Password' id='second' type='password' size="lg"/>
+          <MDBInput wrapperClass='mb-4' label='ABHA ID' id='formControlLg' type='email' name='myid' onChange={(e)=>{setssid(e.target.value)}} size="lg" />
+          <MDBInput wrapperClass='mb-4' label='Password' id='second' type='password' name='password' onChange={(e)=>{setpassword(e.target.value)}}size="lg"/>
 
           {/* <div className="d-flex justify-content-between mb-4">
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
