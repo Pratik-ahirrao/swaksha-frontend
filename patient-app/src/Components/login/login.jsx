@@ -24,7 +24,7 @@ function App() {
           "password": password,
         }
         console.log(dat);
-        axios.post("http://localhost:9005/api/v1/auth/authenticate",
+        axios.post("http://localhost:9001/patient/authenticate",
         dat
         ).then((resp)=>{
           console.log(resp)
