@@ -68,12 +68,12 @@ const Sidebar = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
             <ExitToAppIcon className="icon" />
-            <span className='dashlist'>Logout</span>
+            <span className='dashlist' >Logout</span>
             </li>
           </Link>
         </ul>
       </div>
-      <div className="bottom">
+      <div className="bottom">8
         {/* <div
           className="colorOption"
           onClick={() => dispatch({ type: "LIGHT" })}

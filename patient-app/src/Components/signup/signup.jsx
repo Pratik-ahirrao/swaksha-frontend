@@ -1,9 +1,7 @@
 import React from 'react';
-// import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import './signup.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-// import {useHistory} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 
@@ -63,55 +61,43 @@ function App(){
 
       const API_URL = "http://localhost:9005/api/v1/auth/send-otp";
       const routeToVerifyOtp = (e) =>{ 
-        e.preventDefault();
-        console.log(e)
-        const dat={
-          "first_name": name,
-          "last_name": lastName,
-          "email": email,
-          "phone_number": phone_number,
-          "address": address,
-          "city": city,
-          "state": state,
-          "date": dob,
-          "cm_pin_password": cmPinPassword,
-          "cm_pin_confirm_password": cmPinConfirmPassword,
-          "password": password,
-          "confirm_password": confirmPassword,
-          "gender": genderValue
-        }
-         console.log(dat)
-        // axios.post(
-        //   API_URL, {
-        //     "phone_number":e.phone_number
-        //   } 
-        // ).then(()=>
-        // {
-        let path = `/verifyotp`; 
-        navigate(path, {state: 
-         dat
-        }
-        );
-        // <Navigate 
-     
-        //   to= {{
-        //     pathname: path,
-        //     state: {data:{
-        //       "first_name": e.first_name,
-        //       "last_name": e.last_name,
-        //       "email": e.email,
-        //       "phone_number": e.phone_number,
-        //       "address": e.address,
-        //       "city": e.city,
-        //       "state": e.state,
-        //       "date": e.date,
-        //       "cm_pin_password": e.cm_pin_password,
-        //       "cm_pin_confirm_password": e.cm_pin_confirm_password,
-        //       "gender": e.gender
-        //     }}
-        //   }}
-        // />
+            e.preventDefault();
+            console.log(e)
+            const dat={
+              "first_name": name,
+              "last_name": lastName,
+              "email": email,
+              "phone_number": phone_number,
+              "address": address,
+              "city": city,
+              "state": state,
+              "date": dob,
+              "cm_pin_password": cmPinPassword,
+              "cm_pin_confirm_password": cmPinConfirmPassword,
+              "password": password,
+              "confirm_password": confirmPassword,
+              "gender": genderValue
+            }
+            console.log(dat)
+            axios.post(
+              API_URL, {
+                "phone_number":phone_number
+              } 
+            ).then(()=>
+            {
+            let path = `/verifyotp`; 
+            navigate(path, {state: 
+            dat
+            }
+            );
+            <Navigate 
         
+              to= {{
+                pathname: path,
+                state: {data:dat}
+              }}
+            />
+          })
         
       
     }
