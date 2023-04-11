@@ -7,8 +7,26 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import  {useState, useEffect} from 'react';
+import axios from "axios";
+import authHeader from "../../services/auth-header";
 
-const datatable = () => {
+
+const Datatable = () => {
+  let [data, setData] = useState(null);
+
+  useEffect(() => {
+    console.log(authHeader())
+    // fetch("https://dog.ceo/api/breeds/image/random/3")
+    axios.post("http://localhost:9001/patient/fetchConsents",{},{headers:authHeader()})
+    .then(response => {
+        setData(response.data);
+         console.log(response.data);
+    })
+        // 4. Setting *dogImage* to the image url that we received from the response above
+    // .then(data => setDogImage(data.message))
+  },[])
+
   const rows = [
     {
       Doctor_SSID: 1143165,
@@ -56,22 +74,24 @@ const datatable = () => {
             <TableCell className="tableCell">Doctor SSID</TableCell>
             <TableCell className="tableCell">HIU SSID</TableCell>
             <TableCell className="tableCell">Patient SSID</TableCell>
-            <TableCell className="tableCell">Initiated DateTime</TableCell>
+            {/* <TableCell className="tableCell">Initiated DateTime</TableCell> */}
             <TableCell className="tableCell">Status</TableCell>
             <TableCell className="tableCell">Action</TableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data && data.consentObjs
+.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.Doctor_SSID}</TableCell>
+              <TableCell className="tableCell">{row.doctorSSID}</TableCell>
                
-              <TableCell className="tableCell">{row.HIU_SSID}</TableCell>
-              <TableCell className="tableCell">{row.patient_SSID}</TableCell>
-              <TableCell className="tableCell">{row.initiated_dateTime}</TableCell>
+              <TableCell className="tableCell">{row.hiuSSID}</TableCell>
+              <TableCell className="tableCell">{row.patientSSID}</TableCell>
+              {/* <TableCell className="tableCell">{row.requestInitiatedDate}</TableCell> */}
               <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
+
+                <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>
               </TableCell>
               <TableCell className="tableCell">
               <div className="cellAction">
@@ -88,10 +108,11 @@ const datatable = () => {
               </TableCell>
             </TableRow>
           ))}
+          
         </TableBody>
       </Table>
     </TableContainer>
   );
 };
 
-export default datatable;
+export default Datatable;

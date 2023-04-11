@@ -3,18 +3,37 @@ import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } f
 import './login.css';
 import img from './hospital2.jpg';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from 'react';
+import { setAuthToken } from '../setAuthToken.js';
 
 function App() {
     let navigate = useNavigate(); 
-
+    let [ssid,setssid]=useState("");
+    let [password, setpassword] = useState("");
     const routeToSignup = () =>{ 
         let path = `/signup`; 
         navigate(path);
       }
     
-      const routeToDashboard= () =>{ 
-        let path = `/dashboard`; 
-        navigate(path);
+      const routeToDashboard= (e) =>{ 
+        e.preventDefault();
+        const dat =  {
+          "ssid": ssid,
+          "password": password,
+        }
+        console.log(dat);
+        axios.post("http://localhost:9002/auth/authenticate",
+        dat
+        ).then((resp)=>{
+          console.log(resp)
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          setAuthToken(resp.data.token);
+          let path = '/dashboard'; 
+
+          navigate(path);
+        }
+        )
       }
 
   return (
@@ -50,8 +69,8 @@ function App() {
           {/* <div className="divider d-flex align-items-center my-4">
             <p className="text-center fw-bold mx-3 mb-0">Or</p>
           </div> */}
-          <MDBInput wrapperClass='mb-4' label='Doctor SSID' id='formControlLg' type='email' size="lg" />
-          <MDBInput wrapperClass='mb-4' label='Password' id='second' type='password' size="lg"/>
+          <MDBInput wrapperClass='mb-4' label='Doctor SSID' id='formControlLg' type='email' onChange={(e)=>{setssid(e.target.value)}} size="lg" />
+          <MDBInput wrapperClass='mb-4' label='Password' id='second' type='password' onChange={(e)=>{setpassword(e.target.value)}} size="lg"/>
 
           {/* <div className="d-flex justify-content-between mb-4">
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />

@@ -103,7 +103,7 @@ export default function FormPropsTextFields() {
           label="Data Access Start DateTime"
           defaultValue="03/04/2023 10:13"
           InputLabelProps={{ shrink: true, required: true }}
-          type='datetime-local'
+          type='date'
         />
 
         <TextField
@@ -112,7 +112,7 @@ export default function FormPropsTextFields() {
           label="Data Access Start DateTime"
           defaultValue="03/04/2023 10:13"
           InputLabelProps={{ shrink: true, required: true }}
-          type='datetime-local'
+          type='date'
         />
       </div>
       <div className="approveButton">

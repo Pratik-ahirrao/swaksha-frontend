@@ -32,8 +32,10 @@ function App() {
           setAuthToken(resp.data.token);
           let path = '/dashboard'; 
 
-          navigate(path);
+          navigate(path, dat);
         }
+        ).then(
+          console.log("hello")
         )
         
       }
