@@ -29,7 +29,7 @@ function App() {
           console.log(resp)
           localStorage.setItem("user", JSON.stringify(resp.data));
           setAuthToken(resp.data.token);
-          let path = '/dashboard'; 
+          let path = '/requestData'; 
 
           navigate(path);
         }
