@@ -7,49 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import  {useState, useEffect} from 'react';
-import axios from "axios";
-import authHeader from "../../services/auth-header";
-import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-
-const Datatable = () => {
-  let navigate = useNavigate(); 
-
-  let [data, setData] = useState(null);
-
-  useEffect(() => {
-    console.log(authHeader())
-    // fetch("https://dog.ceo/api/breeds/image/random/3")
-    axios.post("http://localhost:9001/patient/fetchConsents",{},{headers:authHeader()})
-    .then(response => {
-        
-        console.log(response)
-       // console.log(response.data.size)
-        setData(response.data);
-     
-    })
-       
-  },[])
-
-  const routeToApproveConsent = (ind) =>{ 
-    let path = `/approveConsent`; 
-    // navigate(path);
-     console.log(ind);
-    navigate(path, {state: 
-            data.consentObjs[ind]
-            }
-            );
-    //         <Navigate 
-        
-    //           to= {{
-    //             pathname: path,
-    //             state: {data:data}
-    //           }}
-    //         />
-  }
-
+const datatable = () => {
   const rows = [
     {
       Doctor_SSID: 1143165,
@@ -97,30 +56,28 @@ const Datatable = () => {
             <TableCell className="tableCell">Doctor SSID</TableCell>
             <TableCell className="tableCell">HIU SSID</TableCell>
             <TableCell className="tableCell">Patient SSID</TableCell>
-            {/* <TableCell className="tableCell">Initiated DateTime</TableCell> */}
+            <TableCell className="tableCell">Initiated DateTime</TableCell>
             <TableCell className="tableCell">Status</TableCell>
             <TableCell className="tableCell">Action</TableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
-          {data && data.consentObjs
-.map((row,ind) => (
-            <TableRow key={ind}>
-              <TableCell className="tableCell">{row.doctorSSID}</TableCell>
+          {rows.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell className="tableCell">{row.Doctor_SSID}</TableCell>
                
-              <TableCell className="tableCell">{row.hiuSSID}</TableCell>
-              <TableCell className="tableCell">{row.patientSSID}</TableCell>
-              {/* <TableCell className="tableCell">{row.requestInitiatedDate}</TableCell> */}
+              <TableCell className="tableCell">{row.HIU_SSID}</TableCell>
+              <TableCell className="tableCell">{row.patient_SSID}</TableCell>
+              <TableCell className="tableCell">{row.initiated_dateTime}</TableCell>
               <TableCell className="tableCell">
-
-                <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>
+                <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>
               <TableCell className="tableCell">
               <div className="cellAction">
-                {/* <Link to="/approveConsent" style={{ textDecoration: "none" }}> */}
-                <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>Approve</div>
-                {/* </Link> */}
+                <Link to="/approveConsent" style={{ textDecoration: "none" }}>
+                <div className="viewButton">Approve</div>
+                </Link>
                 <div
                 className="deleteButton"
                 
@@ -131,11 +88,10 @@ const Datatable = () => {
               </TableCell>
             </TableRow>
           ))}
-          
         </TableBody>
       </Table>
     </TableContainer>
   );
 };
 
-export default Datatable;
+export default datatable;

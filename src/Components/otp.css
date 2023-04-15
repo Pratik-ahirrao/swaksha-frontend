@@ -1,0 +1,30 @@
+#outer{
+    margin-top: 130px;
+    padding:0%;
+    min-height: auto;
+    width:55%;
+}
+.form-details{
+    margin-top: 0%;
+}
+.mb5{
+    align-items: center;
+}
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(135deg, #71B7E6, #9B59B6);
+  }
+  
+
+  @media (min-width: 769px) {
+    .gradient-custom-2 {
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
+  }

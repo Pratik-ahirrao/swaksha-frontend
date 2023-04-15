@@ -1,7 +1,4 @@
 import React from 'react';
-import axios from "axios";
-import { useLocation } from 'react-router-dom';
-
 import {
   MDBBtn,
   MDBContainer,
@@ -13,31 +10,16 @@ from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import img from '../framework-logo.png';
+
 import './otp.css';
 import { height } from '@mui/system';
-import { setAuthToken } from './setAuthToken';
 function App() {
     let navigate = useNavigate(); 
-    const location = useLocation();
-    let registerationDetails = location.state;
-    // console.log(location.state);
-    const routeToDashboard = (e) =>{ 
-        registerationDetails.otp=otp.join("");
-        registerationDetails.role="USER"
-        console.log(registerationDetails);
-        axios.post("http://localhost:9005/api/v1/auth/verify-otp",
-        registerationDetails
-        ).then((resp)=>{
-          let path = `/dashboard`; 
-          localStorage.setItem("user", JSON.stringify(resp.data));
-          setAuthToken(resp.data.token);
-          navigate(path);
-        }
-        )
-        
-       
+
+    const routeToDashboard = () =>{ 
+        let path = `/dashboard`; 
+        navigate(path);
       }
-    
     const [otp, setOtp] = useState(new Array(6).fill(""));
    
     const handleChange = (element, index) => {

@@ -8,13 +8,25 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
+import { useLocation } from 'react-router-dom';
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
-
+import { useState } from 'react';
+import axios from 'axios';
+import authHeader from "../../services/auth-header";
 export default function FormPropsTextFields() {
+   const location = useLocation();
+   let consentDetails = location.state;
+  console.log(consentDetails);
+  let [hipssid, setHipssid] = useState("");
+  let [consentEndDate, setconsentEndDate] = useState(null);
+  let [dataAccessStartDate, setdataAccessStartDate] = useState(null);
+  let [dataAccessEndDate, setdataAccessEndDate] = useState(null);
+
+
     let navigate = useNavigate(); 
 
     const routeToDashboard = () =>{ 
@@ -22,9 +34,27 @@ export default function FormPropsTextFields() {
         navigate(path);
       }
 
+    const API_URL = "http://localhost:9001/patient/approveConsent";
+
     const routeToConsents = () =>{ 
-        let path = `/consents`; 
-        navigate(path);
+      let data={}
+      data.consentObj=consentDetails;
+      data.encPin="123";
+    //  data.hipSSID="123456789";
+      // data.consentObj.doctorSSID="155827267931"
+      data.consentObj.hipSSID="123456789"
+      data.patientSSID=consentDetails.patientSSID;
+      console.log(data)
+      axios.post(
+        API_URL, data,{headers:authHeader()}
+      ).then(()=>
+      {
+      let path = `/consents`;
+      navigate(path);
+      
+     })
+        // let path = `/consents`; 
+        // navigate(path);
     }
   return (
     <Box
@@ -42,22 +72,23 @@ export default function FormPropsTextFields() {
           id="outlined-required"
           label="HIP SSID"
           type='text'
+          onChange={(e)=>{setHipssid(e.target.value)}}
         />
         <TextField
           disabled
           id="outlined-disabled"
           label="Doctor SSID"
-          defaultValue={12}
-          type="number"
+          defaultValue={consentDetails['doctorSSID']}
+          type="text"
         />
        
        <TextField
           required
           id="outlined-required"
-          label="Consent End DateTime"
+          label="Consent End Date"
           defaultValue="03/04/2023 10:13"
           InputLabelProps={{ shrink: true, required: true }}
-          type='datetime-local'
+          type='date'
         />
       
       <TextField
@@ -76,31 +107,31 @@ export default function FormPropsTextFields() {
           disabled
           id="outlined-disabled"
           label="HIU SSID"
-          defaultValue={2}
-          type="number"
+          defaultValue={consentDetails["hiuSSID"]}
+          type="text"
         />
 
-        <TextField
+        {/* <TextField
           disabled
           id="outlined-disabled"
           label="HIU SSID"
           defaultValue={2}
           type="number"
-        />
+        /> */}
         
         <TextField
           disabled
           id="outlined-disabled"
           label="Patient SSID"
-          defaultValue={1}
-          type="number"
+          defaultValue={consentDetails["patientSSID"]}
+          type="text"
         />
       </div>
       <div>
         <TextField
           required
           id="outlined-required"
-          label="Data Access Start DateTime"
+          label="Data Access Start Date"
           defaultValue="03/04/2023 10:13"
           InputLabelProps={{ shrink: true, required: true }}
           type='date'
@@ -109,7 +140,7 @@ export default function FormPropsTextFields() {
         <TextField
           required
           id="outlined-required"
-          label="Data Access Start DateTime"
+          label="Data Access End Date"
           defaultValue="03/04/2023 10:13"
           InputLabelProps={{ shrink: true, required: true }}
           type='date'
@@ -117,7 +148,7 @@ export default function FormPropsTextFields() {
       </div>
       <div className="approveButton">
 
-      <Button variant="contained" onClick={routeToDashboard}>Approve</Button>
+      <Button variant="contained" onClick={routeToConsents}>Approve</Button>
       </div>
       <div className="backbutton">
       <Button variant="contained" onClick={routeToConsents} >Back</Button>
