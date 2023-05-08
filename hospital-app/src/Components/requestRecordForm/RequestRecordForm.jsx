@@ -25,6 +25,7 @@ export default function FormPropsTextFields() {
   const [consentID, setConsentID] = useState("");
   const [errorMessage, setErrorMessage] = useState(null)
   const [errorFormat, setFormat] = useState(null)
+  const [hipSSID,setHipSSID]=useState("")
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -49,7 +50,8 @@ export default function FormPropsTextFields() {
     axios.post(
       "http://localhost:9002/hospital/requests/newRequest",
       {
-        "patientSSID": patientSSID
+        "patientSSID": patientSSID,
+        "hipSSID":hipSSID
       },
       {headers:authHeader()}
     ).then((res) => {
@@ -99,7 +101,13 @@ export default function FormPropsTextFields() {
           type='text'
           onChange={(e)=>{setPatientSSID(e.target.value)}}
         />
-        
+         <TextField
+          required
+          id="outlined-required"
+          label="HIP SSID"
+          type='text'
+          onChange={(e)=>{setHipSSID(e.target.value)}}
+        />
        
        {/* <TextField
           id="outlined-required"

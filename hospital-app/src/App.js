@@ -1,8 +1,8 @@
 import Login from './Components/login/login';
 import { BrowserRouter, Route, Switch, Link,Routes } from "react-router-dom";
-// import Signup from './Components/signup';
-// import VerifyOtp from './Components/verifyOtp';
-// import OTP from './Components/otp';
+ import Signup from './Components/signup';
+ import VerifyOtp from './Components/verifyOtp';
+ import OTP from './Components/otp';
 import Dashboard from './Components/dashboard';
 import RequestRecord from './Components/requestRecord';
 import RecordDetails from './Components/RecordDetails';
@@ -23,8 +23,8 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route exact path="/" element={<Login />}/>
-      {/* <Route path="/signup" element={<Signup />}/> */}
-      {/* <Route path="/verifyOtp" element={<OTP />}/> */}
+      <Route path="/signup" element={<Signup />}/> 
+       <Route path="/verifyOtp" element={<OTP />}/> 
       <Route path="/dashboard"  element={ <RouteGuard ><Dashboard/></RouteGuard>}/>
       <Route path="/requestData" element={<RouteGuard ><RequestRecord /></RouteGuard>}/>
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>

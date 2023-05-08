@@ -25,7 +25,7 @@ export default function FormPropsTextFields() {
   let [consentEndDate, setconsentEndDate] = useState(null);
   let [dataAccessStartDate, setdataAccessStartDate] = useState(null);
   let [dataAccessEndDate, setdataAccessEndDate] = useState(null);
-
+  
 
     let navigate = useNavigate(); 
 
@@ -39,10 +39,11 @@ export default function FormPropsTextFields() {
     const routeToConsents = () =>{ 
       let data={}
       data.consentObj=consentDetails;
+      data.consentObj.hipSSID=hipssid;
       data.encPin="123";
     //  data.hipSSID="123456789";
       // data.consentObj.doctorSSID="155827267931"
-      data.consentObj.hipSSID="123456789"
+     
       data.patientSSID=consentDetails.patientSSID;
       console.log(data)
       axios.post(
