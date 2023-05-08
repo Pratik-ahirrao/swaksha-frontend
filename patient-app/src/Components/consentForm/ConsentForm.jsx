@@ -39,8 +39,8 @@ export default function FormPropsTextFields() {
     const routeToConsents = () =>{ 
       let data={}
       data.consentObj=consentDetails;
-      data.consentObj.hipSSID=hipssid;
-      data.encPin="123";
+      //data.consentObj.hipSSID=hipssid;
+      data.encPin="1234";
     //  data.hipSSID="123456789";
       // data.consentObj.doctorSSID="155827267931"
      

@@ -46,7 +46,7 @@ export default function FormPropsTextFields() {
 
   const handleClick = () => {
     // console.log(patientSSID, consentID);
-    
+    console.log(hipSSID)
     axios.post(
       "http://localhost:9002/hospital/requests/newRequest",
       {
