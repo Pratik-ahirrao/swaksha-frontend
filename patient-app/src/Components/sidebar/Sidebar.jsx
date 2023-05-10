@@ -39,12 +39,12 @@ const Sidebar = () => {
           <Divider />
 
           <p className="title">LISTS</p>
-          <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          {/* <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
               <span className='dashlist'>My records</span>
             </li>
-          </Link>
+          </Link> */}
         
           <Link to="/consents" style={{ textDecoration: "none" }}>
             <li>
@@ -52,7 +52,26 @@ const Sidebar = () => {
             <span className='dashlist'>Consents</span>
             </li>
           </Link>
-          
+
+          <p className="title">EHR RECORDS</p>
+          <Link to="/observation" style={{ textDecoration: "none" }}>
+            <li>
+              <HealthAndSafetyOutlinedIcon className="icon" />
+              <span className='dashlist'>Observation</span>
+            </li>
+          </Link>
+          <Link to="/condition" style={{ textDecoration: "none" }}>
+            <li>
+              <HealthAndSafetyOutlinedIcon className="icon" />
+              <span className='dashlist'>Condition</span>
+            </li>
+          </Link>
+          <Link to="/procedure" style={{ textDecoration: "none" }}>
+            <li>
+              <HealthAndSafetyOutlinedIcon className="icon" />
+              <span className='dashlist'>Procedure</span>
+            </li>
+          </Link>
           <Divider />
 
           
@@ -73,7 +92,7 @@ const Sidebar = () => {
           </Link>
         </ul>
       </div>
-      <div className="bottom">8
+      <div className="bottom">
         {/* <div
           className="colorOption"
           onClick={() => dispatch({ type: "LIGHT" })}
