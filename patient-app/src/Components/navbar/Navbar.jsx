@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import { useNavigate } from "react-router-dom";
 import './navbar.scss'
@@ -11,7 +11,17 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 const Navbar = () => {
     // const { dispatch } = useContext(DarkModeContext);
-  
+    const [notifications, setNotifications] = useState(localStorage.getItem("notifications"));
+    
+    useEffect(()=>{
+      setNotifications(localStorage.getItem("notifications"));
+      const handleStorage = () => {
+        setNotifications(localStorage.getItem("notifications"));
+      }
+      window.addEventListener('storage', handleStorage);
+      return () => window.removeEventListener("storage", handleStorage);
+    }, []);
+
     return (
       <div className="navbar">
           <div className="wrapper">
@@ -27,7 +37,7 @@ const Navbar = () => {
           </div>
           <div className="item">
             <NotificationsNoneOutlinedIcon className="icon" />
-            <div className="counter">1</div>
+            <div className="counter">{notifications}</div>
           </div>
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
