@@ -23,9 +23,9 @@ export default function FormPropsTextFields() {
   console.log(consentDetails);
   let [hipssid, setHipssid] = useState("");
   let [consentEndDate, setconsentEndDate] = useState(null);
-  let [dataAccessStartDate, setdataAccessStartDate] = useState(null);
-  let [dataAccessEndDate, setdataAccessEndDate] = useState(null);
-  
+  let [dataAccessStartDate, setDataAccessStartDate] = useState(null);
+  let [dataAccessEndDate, setDataAccessEndDate] = useState(null);
+  let [encPin,setEncPin]=useState("");
 
     let navigate = useNavigate(); 
 
@@ -40,11 +40,13 @@ export default function FormPropsTextFields() {
       let data={}
       data.consentObj=consentDetails;
       //data.consentObj.hipSSID=hipssid;
-      data.encPin="1234";
     //  data.hipSSID="123456789";
       // data.consentObj.doctorSSID="155827267931"
      
-      data.patientSSID=consentDetails.patientSSID;
+     // data.patientSSID=consentDetails.patientSSID;
+      data.consentObj.dataAccessStartDate=dataAccessStartDate;
+      data.consentObj.dataAccessEndDate=dataAccessEndDate;
+      data.encPin=encPin;
       console.log(data)
       axios.post(
         API_URL, data,{headers:authHeader()}
@@ -69,11 +71,19 @@ export default function FormPropsTextFields() {
     <h1 className="heading">Approve Consent</h1>
       <div>
         <TextField
-          required
+          disabled
           id="outlined-required"
           label="HIP SSID"
           type='text'
-          onChange={(e)=>{setHipssid(e.target.value)}}
+          defaultValue={consentDetails['hipSSID']}
+          
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Consent Manager Pin"
+          type='password'
+          onChange={(e)=>{setEncPin(e.target.value)}}
         />
         <TextField
           disabled
@@ -82,26 +92,27 @@ export default function FormPropsTextFields() {
           defaultValue={consentDetails['doctorSSID']}
           type="text"
         />
-       
+      
+	 <TextField
+          required
+          id="outlined-required"
+          label="Consent Start Date"
+          //defaultValue="03/04/2023"
+          InputLabelProps={{ shrink: true, required: true }}
+          onChange={(e)=>{setDataAccessStartDate(e.target.value)}}
+          type='date'
+        />
+        
        <TextField
           required
           id="outlined-required"
           label="Consent End Date"
-          defaultValue="03/04/2023 10:13"
+        //  defaultValue="03/04/2023"
           InputLabelProps={{ shrink: true, required: true }}
+          onChange={(e)=>{setDataAccessEndDate(e.target.value)}}
           type='date'
         />
-      
-      <TextField
-          disabled
-          id="outlined-required"
-          label="Initiated DateTime"
-          defaultValue="03/04/2023 10:13 PM"
-          InputLabelProps={{ shrink: true, required: true }}
-          type='datetime-local'
-        />
-      </div>
-    
+    	</div>
       <div>
        
       <TextField
@@ -128,25 +139,7 @@ export default function FormPropsTextFields() {
           type="text"
         />
       </div>
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Data Access Start Date"
-          defaultValue="03/04/2023 10:13"
-          InputLabelProps={{ shrink: true, required: true }}
-          type='date'
-        />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="Data Access End Date"
-          defaultValue="03/04/2023 10:13"
-          InputLabelProps={{ shrink: true, required: true }}
-          type='date'
-        />
-      </div>
       <div className="approveButton">
 
       <Button variant="contained" onClick={routeToConsents}>Approve</Button>
