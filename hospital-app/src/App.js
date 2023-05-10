@@ -9,7 +9,7 @@ import RecordDetails from './Components/RecordDetails';
 import VerifyConsent from './Components/verifyConsent';
 import { setAuthToken } from './Components/setAuthToken';
 import { RouteGuard } from './Components/RouteGuard';
-
+import CreateRecord from './Components/createEhrRecord/createRecord';
 function App() {
     
   const user = localStorage.getItem("user");
@@ -29,6 +29,7 @@ function App() {
       <Route path="/requestData" element={<RouteGuard ><RequestRecord /></RouteGuard>}/>
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>
       <Route path="/verifyConsent" element={<RouteGuard><VerifyConsent /></RouteGuard>}/>
+      <Route path="/createRecord" element={<RouteGuard><CreateRecord /></RouteGuard>}/>
 
       </Routes>
       </BrowserRouter>

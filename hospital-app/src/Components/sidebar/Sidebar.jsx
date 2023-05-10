@@ -17,6 +17,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import HealthAndSafetyOutlinedIcon from '@mui/icons-material/HealthAndSafetyOutlined';
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
@@ -59,7 +60,12 @@ const Sidebar = () => {
             </li>
           </Link>
           
-          
+          <Link to="/createRecord" style={{ textDecoration: "none" }}>
+            <li>
+            <AddCircleOutlineIcon className="icon" />
+            <span className='dashlist'> Create EHR Records</span>
+            </li>
+          </Link>
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
