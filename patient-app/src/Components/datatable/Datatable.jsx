@@ -36,7 +36,7 @@ const Datatable = () => {
   const routeToApproveConsent = (ind) =>{ 
     let path = `/approveConsent`; 
     // navigate(path);
-     console.log(ind);
+    //  console.log(ind);
     navigate(path, {state: 
             data.consentObjs[ind]
             }
@@ -49,6 +49,57 @@ const Datatable = () => {
     //           }}
     //         />
   }
+
+  const routeToRevokeConsent = (ind) =>{ 
+
+    const REVOKE_URL = "http://localhost:9001/patient/revokeConsent";
+    // let path = `/revokeConsent`; 
+    // navigate(path);
+    console.log(data)
+    let reqData = {};
+    reqData.consentID = data.consentObjs[ind].consentID;
+    reqData.reqSSID = data.SSID;
+     console.log("revoke", reqData);
+    // navigate(path, {state: 
+            // data.consentObjs[ind]
+            // }
+            // );
+    axios.post(
+      REVOKE_URL, reqData,{headers:authHeader()}
+    ).then(()=>
+    {
+    let path = `/consents`;
+    navigate(path);
+    window.location.reload();
+
+    })
+    //         <Navigate 
+        
+    //           to= {{
+    //             pathname: path,
+    //             state: {data:data}
+    //           }}
+    //         />
+  }
+
+  const routeToRejectConsent = (ind) =>{ 
+
+    const REVOKE_URL = "http://localhost:9001/patient/rejectConsent";
+    console.log(data)
+    let reqData = {};
+    reqData.consentID = data.consentObjs[ind].consentID;
+    reqData.reqSSID = data.SSID;
+     console.log("revoke", reqData);
+
+    axios.post(
+      REVOKE_URL, reqData,{headers:authHeader()}
+    ).then(()=>
+    {
+    let path = `/consents`;
+    navigate(path);
+    window.location.reload();
+    })
+}
 
   const rows = [
     {
@@ -119,14 +170,19 @@ const Datatable = () => {
               <TableCell className="tableCell">
               <div className="cellAction">
                 {/* <Link to="/approveConsent" style={{ textDecoration: "none" }}> */}
-                <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>Approve</div>
+                {row.isApproved && <div className="disabledButton">Approve</div>}
+                {!row.isApproved && <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>Approve</div>}
                 {/* </Link> */}
-                <div
+                { row.isApproved && <div
                 className="deleteButton"
-                
-                >
+                onClick={(e)=>routeToRevokeConsent(ind)}>
                 Revoke
-                </div>
+                </div>}
+                { !row.isApproved && <div
+                className="disabledButton">
+                Revoke
+                </div>}
+                <div className="rejectButton" onClick={(e)=>routeToRejectConsent(ind)}>Reject</div>
             </div>
               </TableCell>
             </TableRow>

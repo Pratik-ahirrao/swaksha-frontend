@@ -11,6 +11,15 @@
   height: calc(100% - 10px);
 }
 
+.iconlang{
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  float: right;
+  margin-top: -45px;
+
+}
+
 .image-fluid{
     max-width: 100%;
 }

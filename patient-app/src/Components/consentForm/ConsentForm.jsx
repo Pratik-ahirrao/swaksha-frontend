@@ -142,7 +142,7 @@ export default function FormPropsTextFields() {
 
       <div className="approveButton">
 
-      <Button variant="contained" onClick={routeToConsents}>Approve</Button>
+      <Button variant="contained" className="appbutton" onClick={routeToConsents}>Approve</Button>
       </div>
       <div className="backbutton">
       <Button variant="contained" onClick={routeToConsents} >Back</Button>

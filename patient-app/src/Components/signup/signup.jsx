@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
-
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import LanguageSelect from "../navbar/LanguageSelect.jsx";
 
 function useRadioButtons(name) {
   const [value, setState] = useState(null);
@@ -104,6 +105,10 @@ function App(){
     return (
         <div className='outer' >
             <div className="wrapper">
+            <div className='iconlang'>
+              <LanguageOutlinedIcon  />
+              <LanguageSelect />
+            </div>
         <div className="title">Registration</div>
         <form action="#">
           <div className="user-details">
