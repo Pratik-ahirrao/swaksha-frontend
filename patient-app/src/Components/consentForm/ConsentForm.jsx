@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -19,6 +20,7 @@ import axios from 'axios';
 import authHeader from "../../services/auth-header";
 export default function FormPropsTextFields() {
    const location = useLocation();
+   const { t } = useTranslation();
    let consentDetails = location.state;
   console.log(consentDetails);
   let [hipssid, setHipssid] = useState("");
@@ -73,22 +75,22 @@ export default function FormPropsTextFields() {
         <TextField
           disabled
           id="outlined-required"
-          label="HIP SSID"
-          type='text'
-          defaultValue={consentDetails['hipSSID']}
+          label={t("hip_ssid")}
           
+          defaultValue={consentDetails['hipSSID']}
+          type='text'
         />
         <TextField
           required
           id="outlined-required"
-          label="Consent Manager Pin"
+          label={t("consent_manager_pin")}
           type='password'
           onChange={(e)=>{setEncPin(e.target.value)}}
         />
         <TextField
           disabled
           id="outlined-disabled"
-          label="Doctor SSID"
+          label={t("doctor_ssid")}
           defaultValue={consentDetails['doctorSSID']}
           type="text"
         />
@@ -96,7 +98,7 @@ export default function FormPropsTextFields() {
 	 <TextField
           required
           id="outlined-required"
-          label="Consent Start Date"
+          label={t("data_access_start_date")}
           //defaultValue="03/04/2023"
           InputLabelProps={{ shrink: true, required: true }}
           onChange={(e)=>{setDataAccessStartDate(e.target.value)}}
@@ -106,7 +108,17 @@ export default function FormPropsTextFields() {
        <TextField
           required
           id="outlined-required"
-          label="Consent End Date"
+          label={t("data_access_end_date")}
+        //  defaultValue="03/04/2023"
+          InputLabelProps={{ shrink: true, required: true }}
+          onChange={(e)=>{setDataAccessEndDate(e.target.value)}}
+          type='date'
+        />
+
+      <TextField
+          required
+          id="outlined-required"
+          label={t("consent_end_date")}
         //  defaultValue="03/04/2023"
           InputLabelProps={{ shrink: true, required: true }}
           onChange={(e)=>{setDataAccessEndDate(e.target.value)}}
@@ -118,7 +130,7 @@ export default function FormPropsTextFields() {
       <TextField
           disabled
           id="outlined-disabled"
-          label="HIU SSID"
+          label={t("hiu_ssid")}
           defaultValue={consentDetails["hiuSSID"]}
           type="text"
         />
@@ -134,7 +146,7 @@ export default function FormPropsTextFields() {
         <TextField
           disabled
           id="outlined-disabled"
-          label="Patient SSID"
+          label={t("patient_ssid")}
           defaultValue={consentDetails["patientSSID"]}
           type="text"
         />
@@ -142,10 +154,10 @@ export default function FormPropsTextFields() {
 
       <div className="approveButton">
 
-      <Button variant="contained" className="appbutton" onClick={routeToConsents}>Approve</Button>
+      <Button variant="contained" className="appbutton" onClick={routeToConsents}>{t("approve")}</Button>
       </div>
       <div className="backbutton">
-      <Button variant="contained" onClick={routeToConsents} >Back</Button>
+      <Button variant="contained" onClick={routeToConsents} >{t("back")}</Button>
 
       </div>
 

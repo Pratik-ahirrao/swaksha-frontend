@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 // import axios from 'axios';
 import img from '../framework-logo.png';
+import { useTranslation } from "react-i18next";
 
 function App(){
     let navigate = useNavigate(); 
+    const { t } = useTranslation();
 
     const routeToDashboard = () =>{ 
         let path = `/dashboard`; 
@@ -56,7 +58,7 @@ function App(){
             <div className="container" id="container">
             <div className="form-container log-in-container">
                 <form action="#">
-                <h1>Enter the OTP sent to you to your phone number</h1>
+                <h1>{t("enter_the_otp")}</h1>
                     <div className='form-details'>
                     {
                         otp.map((data, index) => {
@@ -82,7 +84,7 @@ function App(){
                     // }
                     routeToDashboard
                     
-                    }>Verify</button>
+                    }>{t("verify")}</button>
                 </form>
             </div>
             <div className="overlay-container">
@@ -90,7 +92,7 @@ function App(){
                 <div className="overlay-panel overlay-right">
                      <img src={img } />
 
-                    <p>Clinic app for patient</p>
+                    <p>{t("clinic_app_for_patient")}</p>
                 </div>
                 </div>
             </div>

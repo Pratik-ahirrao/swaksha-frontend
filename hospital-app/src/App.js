@@ -10,7 +10,9 @@ import VerifyConsent from './Components/verifyConsent';
 import { setAuthToken } from './Components/setAuthToken';
 import { RouteGuard } from './Components/RouteGuard';
 import CreateRecord from './Components/createEhrRecord/createRecord';
-import ShowRecord from './Components/showEhrRecord/showRecord';
+import RequestWithConsent from './Components/requestWithConsent/reqConsent';
+import FetchAllConsent from './Components/fetchAllConsents/fetchConsents';
+import PageNotFound from './Components/pageNotFound/error404';
 
 function App() {
     
@@ -27,12 +29,18 @@ function App() {
       <Route exact path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />}/> 
        <Route path="/verifyOtp" element={<OTP />}/> 
+       <Route exact path="/pagenotfound" element={<PageNotFound />}/>
       <Route path="/dashboard"  element={ <RouteGuard ><Dashboard/></RouteGuard>}/>
       <Route path="/requestData" element={<RouteGuard ><RequestRecord /></RouteGuard>}/>
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>
       <Route path="/verifyConsent" element={<RouteGuard><VerifyConsent /></RouteGuard>}/>
       <Route path="/createRecord" element={<RouteGuard><CreateRecord /></RouteGuard>}/>
+<<<<<<< HEAD
       <Route path="/showRecord" element={<RouteGuard><ShowRecord /></RouteGuard>}/>
+=======
+      <Route path="/requestWithConsent" element={<RouteGuard><RequestWithConsent /></RouteGuard>}/>
+      <Route path="/fetchAllConsent" element={<RouteGuard><FetchAllConsent /></RouteGuard>}/>
+>>>>>>> 345172be80e995f6a8fa68a2932d70ba04a48273
 
       
       </Routes>

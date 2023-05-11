@@ -7,8 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const List = () => {
+  const { t } = useTranslation();
   const rows = [
     {
       id: 1143155,
@@ -53,10 +55,10 @@ const List = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Doctor SSID</TableCell>
-            <TableCell className="tableCell">Doctor Name</TableCell>
-            <TableCell className="tableCell">Creation Date</TableCell>
-            <TableCell className="tableCell">Condition Code</TableCell>
+            <TableCell className="tableCell">{t("doctor_ssid")}</TableCell>
+            <TableCell className="tableCell">{t("doctor_name")}</TableCell>
+            <TableCell className="tableCell">{t("creation_date")}</TableCell>
+            <TableCell className="tableCell">{t("condition_code")}</TableCell>
            
 
           </TableRow>

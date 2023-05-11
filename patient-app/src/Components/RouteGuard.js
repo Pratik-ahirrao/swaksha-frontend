@@ -13,7 +13,7 @@ export const RouteGuard = ({children }) => {
    }
   //  console.log(hasJWT())
    
-    return hasJWT() ? children : <Navigate to="/" />
+    return hasJWT() ? children : <Navigate to="/pageNotFound" />
    
 };
  

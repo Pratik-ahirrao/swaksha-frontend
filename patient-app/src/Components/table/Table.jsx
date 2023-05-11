@@ -7,8 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const List = () => {
+  const { t } = useTranslation();
   const rows = [
     {
       id: 1143155,
@@ -58,18 +60,18 @@ const List = () => {
   ];
   return (
     <TableContainer component={Paper} className="table">
-                    <h1 className="heading">My Health Records</h1>
+                    <h1 className="heading">{t("my_health_records")}</h1>
 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Doctor SSID</TableCell>
-            <TableCell className="tableCell">Doctor Name</TableCell>
-            <TableCell className="tableCell">Diagnosis Date</TableCell>
-            <TableCell className="tableCell">Condition</TableCell>
-            <TableCell className="tableCell">Severity</TableCell>
-            <TableCell className="tableCell">Category</TableCell>
-            <TableCell className="tableCell">Prescription</TableCell>
+            <TableCell className="tableCell">{t("doctor_ssid")}</TableCell>
+            <TableCell className="tableCell">{t("doctor_name")}</TableCell>
+            <TableCell className="tableCell">{t("diagnosis_date")}</TableCell>
+            <TableCell className="tableCell">{t("condition")}</TableCell>
+            <TableCell className="tableCell">{t("severty")}</TableCell>
+            <TableCell className="tableCell">{t("category")}</TableCell>
+            <TableCell className="tableCell">{t("prescription")}</TableCell>
 
           </TableRow>
         </TableHead>
