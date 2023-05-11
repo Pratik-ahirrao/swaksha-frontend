@@ -84,6 +84,8 @@
     "verify": "يؤكد",
     "ssid_will_be_verified": "سيتم إنشاء SSID بمجرد التحقق من otp!",
     "clinic_app_for_patient": "تطبيق عيادة للمريض",
-    "consent_id": "معرف الموافقة"
+    "consent_id": "معرف الموافقة",
+    "data_access_start_date": "تاريخ بدء الوصول إلى البيانات",
+    "data_access_end_date": "تاريخ انتهاء الوصول إلى البيانات"
   }
     

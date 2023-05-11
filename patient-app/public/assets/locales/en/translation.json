@@ -84,6 +84,8 @@
   "verify": "Verify",
   "ssid_will_be_verified": "SSID will be generated once otp is verified!",
   "clinic_app_for_patient": "Clinic app for patient",
-  "consent_id": "Consent ID"
+  "consent_id": "Consent ID",
+  "data_access_start_date": "Data Access Start Date",
+  "data_access_end_date": "Data Access End Date"
 }
   

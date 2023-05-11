@@ -84,6 +84,8 @@
     "verify": "சரிபார்க்கவும்",
     "ssid_will_be_verified": "otp சரிபார்க்கப்பட்டதும் SSID உருவாக்கப்படும்!",
     "clinic_app_for_patient": "நோயாளிக்கான கிளினிக் பயன்பாடு",
-    "consent_id": "ஒப்புதல் ஐடி"
+    "consent_id": "ஒப்புதல் ஐடி",
+    "data_access_start_date": "தரவு அணுகல் தொடக்க தேதி",
+  "data_access_end_date": "தரவு அணுகல் முடிவு தேதி"
   }
     

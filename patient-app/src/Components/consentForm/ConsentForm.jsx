@@ -76,9 +76,9 @@ export default function FormPropsTextFields() {
           disabled
           id="outlined-required"
           label={t("hip_ssid")}
-          type='text'
-          defaultValue={consentDetails['hipSSID']}
           
+          defaultValue={consentDetails['hipSSID']}
+          type='text'
         />
         <TextField
           required
@@ -98,7 +98,7 @@ export default function FormPropsTextFields() {
 	 <TextField
           required
           id="outlined-required"
-          label={t("consent_start_date")}
+          label={t("data_access_start_date")}
           //defaultValue="03/04/2023"
           InputLabelProps={{ shrink: true, required: true }}
           onChange={(e)=>{setDataAccessStartDate(e.target.value)}}
@@ -106,6 +106,16 @@ export default function FormPropsTextFields() {
         />
         
        <TextField
+          required
+          id="outlined-required"
+          label={t("data_access_end_date")}
+        //  defaultValue="03/04/2023"
+          InputLabelProps={{ shrink: true, required: true }}
+          onChange={(e)=>{setDataAccessEndDate(e.target.value)}}
+          type='date'
+        />
+
+      <TextField
           required
           id="outlined-required"
           label={t("consent_end_date")}

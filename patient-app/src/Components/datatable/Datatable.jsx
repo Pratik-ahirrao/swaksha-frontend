@@ -37,7 +37,7 @@ const Datatable = () => {
   const routeToApproveConsent = (ind) =>{ 
     let path = `/approveConsent`; 
     // navigate(path);
-    //  console.log(ind);
+      console.log(data.consentObjs[ind]);
     navigate(path, {state: 
             data.consentObjs[ind]
             }
