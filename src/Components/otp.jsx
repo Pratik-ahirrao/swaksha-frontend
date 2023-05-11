@@ -90,7 +90,7 @@ function App() {
 
             <div className="text-white px-3 py-4 p-md-5 mx-md-4">
                 <h1>Enter the OTP sent to you to your phone number</h1>
-              <p class="small mb-0">ABHA ID will be generated once otp is verified!
+              <p class="small mb-0">SSID will be generated once otp is verified!
               </p>
             </div>
 
