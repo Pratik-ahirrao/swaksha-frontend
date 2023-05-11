@@ -12,14 +12,16 @@ const languageMap = {
 };
 
 const LanguageSelect = () => {
-  const selected = localStorage.getItem("i18nextLng") || "en";
+  let selected = localStorage.getItem("i18nextLng") || "en";
+  if(selected == "en-US") selected = "en";
   const { t } = useTranslation();
 
   const [menuAnchor, setMenuAnchor] = React.useState(null);
   React.useEffect(() => {
     document.body.dir = languageMap[selected].dir;
   }, [menuAnchor, selected]);
-
+  console.log("hellooo");
+  console.log(selected);
   return (
     <div className="d-flex justify-content-end align-items-center language-select-root">
       <Button onClick={({ currentTarget }) => setMenuAnchor(currentTarget)}>

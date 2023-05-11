@@ -38,14 +38,13 @@ const Navbar = () => {
         <div className="item">
           <LanguageOutlinedIcon className="icon" />
           <LanguageSelect />
-          English
         </div>
         
         <div className="items">
-          <div className="item">
+          {/* <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
-          </div>
+          </div> */}
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
