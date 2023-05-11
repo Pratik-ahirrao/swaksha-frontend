@@ -13,6 +13,8 @@ import { Component } from 'react';
 import Observation from './Components/viewRecord/observation';
 import Procedure from './Components/viewRecord/procedure';
 import Condition from './Components/viewRecord/condition';
+import PageNotFound from './Components/pageNotFound/error404';
+
 import "./styles.css";
 
 function App() {
@@ -30,13 +32,14 @@ if (user) {
       <Route  exact path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />}/>
       <Route path="/verifyOtp" element={<OTP />}/>
+      <Route exact path="/pagenotfound" element={<PageNotFound />}/>
       <Route path="/dashboard"  element={ <RouteGuard ><Dashboard/></RouteGuard>}/>
-      <Route path="/consents" element={<Consent />}/>
-      <Route path="/approveConsent" element={<ApproveConsent />}/>
-      <Route path="/profile" element={<Profile />}/>
-      <Route path="/observation" element={<Observation />}/>
-      <Route path="/condition" element={<Condition />}/>
-      <Route path="/procedure" element={<Procedure />}/>
+      <Route path="/consents" element={<RouteGuard ><Consent /></RouteGuard>}/>
+      <Route path="/approveConsent" element={<RouteGuard ><ApproveConsent /></RouteGuard>}/>
+      <Route path="/profile" element={<RouteGuard ><Profile /></RouteGuard>}/>
+      <Route path="/observation" element={<RouteGuard ><Observation /></RouteGuard>}/>
+      <Route path="/condition" element={<RouteGuard ><Condition /></RouteGuard>}/>
+      <Route path="/procedure" element={<RouteGuard ><Procedure /></RouteGuard>}/>
 
       </Routes>
       </BrowserRouter>

@@ -12,7 +12,7 @@ import { RouteGuard } from './Components/RouteGuard';
 import CreateRecord from './Components/createEhrRecord/createRecord';
 import RequestWithConsent from './Components/requestWithConsent/reqConsent';
 import FetchAllConsent from './Components/fetchAllConsents/fetchConsents';
-
+import PageNotFound from './Components/pageNotFound/error404';
 
 function App() {
     
@@ -29,6 +29,7 @@ function App() {
       <Route exact path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />}/> 
        <Route path="/verifyOtp" element={<OTP />}/> 
+       <Route exact path="/pagenotfound" element={<PageNotFound />}/>
       <Route path="/dashboard"  element={ <RouteGuard ><Dashboard/></RouteGuard>}/>
       <Route path="/requestData" element={<RouteGuard ><RequestRecord /></RouteGuard>}/>
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>
