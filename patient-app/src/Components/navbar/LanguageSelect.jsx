@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
 import { ArrowDropDown } from "@mui/icons-material";
-import { Button, Popover, List, ListItem, ListSubheader } from "@mui/material";
+import { Button, Popover, List, ListItem, ListSubheader, ListItemButton, ListItemText } from "@mui/material";
 
 const languageMap = {
   en: { label: "English", dir: "ltr", active: true },
@@ -44,14 +44,14 @@ const LanguageSelect = () => {
             <ListSubheader>{t("select_language")}</ListSubheader>
             {Object.keys(languageMap)?.map(item => (
               <ListItem
-                button
                 key={item}
-                onClick={() => {
+              >
+                <ListItemButton onClick={() => {
                   i18next.changeLanguage(item);
                   setMenuAnchor(null);
-                }}
-              >
-                {languageMap[item].label}
+                }}>
+                  <ListItemText primary = {languageMap[item].label}/>
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
