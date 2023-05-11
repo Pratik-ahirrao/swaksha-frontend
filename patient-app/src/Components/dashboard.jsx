@@ -51,7 +51,6 @@ getToken(messaging, {
   })
   .catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
-    // ...
   });
 
 onMessage(messaging, (payload) => {
@@ -61,14 +60,11 @@ onMessage(messaging, (payload) => {
     icon: 'https://s01.sgp1.digitaloceanspaces.com/inline/845827-vjuyhklbja-1501764800.jpeg',
     dir: 'ltr',
   };
-  let notifications = 0;
-  if(localStorage.getItem("notifications")){
-    notifications = Number(localStorage.getItem("notifications"));
-  } 
-  localStorage.setItem("notifications", String(notifications+1));
+  let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+  notifications.push(payload.notification);
+  localStorage.setItem("notifications", JSON.stringify(notifications));
   window.dispatchEvent(new Event('storage'));
   new Notification(payload.notification.title, options);
-  // ...
 });
 
 function App(){  

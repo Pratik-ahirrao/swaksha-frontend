@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Profile from './profile';
 import PersonalDetails from './personalDetails';
 import ChangePassword from './changePassword';
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,6 +44,7 @@ function a11yProps(index) {
 
 export default function Profile_info() {
   const [value, setValue] = React.useState(0);
+  const { t } = useTranslation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -52,9 +54,9 @@ export default function Profile_info() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Profile" {...a11yProps(0)} />
-          <Tab label="Personal Details" {...a11yProps(1)} />
-          <Tab label="Change Password" {...a11yProps(2)} />
+          <Tab label={t("profile")} {...a11yProps(0)} />
+          <Tab label={t("personal_details")} {...a11yProps(1)} />
+          <Tab label={t("change_password")} {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

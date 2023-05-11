@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import {
   MDBCol,
   MDBContainer,
@@ -18,6 +19,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function ProfilePage() {
+  const { t } = useTranslation();
   return (
        
 
@@ -28,7 +30,7 @@ export default function ProfilePage() {
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>First Name</MDBCardText>
+                    <MDBCardText>{t("first_name")}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">Jane </MDBCardText>
@@ -37,7 +39,7 @@ export default function ProfilePage() {
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Last Name</MDBCardText>
+                    <MDBCardText>{t("last_name")}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">Smith</MDBCardText>
@@ -47,7 +49,7 @@ export default function ProfilePage() {
 
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
+                    <MDBCardText>{t("email")}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">example@example.com</MDBCardText>
@@ -56,7 +58,7 @@ export default function ProfilePage() {
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
+                    <MDBCardText>{t("phone")}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
@@ -66,7 +68,7 @@ export default function ProfilePage() {
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
+                    <MDBCardText>{t("address")}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>

@@ -1,4 +1,4 @@
-import "./datatable.scss";
+import "../datatable/datatable.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,11 +12,11 @@ import axios from "axios";
 import authHeader from "../../services/auth-header";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 const Datatable = () => {
   let navigate = useNavigate(); 
-  const { t } = useTranslation();
+//   const { t } = useTranslation();
 
   let [data, setData] = useState(null);
 
@@ -141,17 +141,15 @@ const Datatable = () => {
   ];
   return (
     <TableContainer component={Paper} className="table">
-            <h1 className="heading">{t("consents_list")}</h1>
+            <h1 className="heading">List of Consents</h1>
 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell className="tableCell">{t("consent_id")}</TableCell>
-            <TableCell className="tableCell">{t("doctor_ssid")}</TableCell>
-            <TableCell className="tableCell">{t("hiu_ssid")}</TableCell>
-            <TableCell className="tableCell">{t("patient_ssid")}</TableCell>
-            <TableCell className="tableCell">{t("status")}</TableCell>
-            <TableCell className="tableCell">{t("action")}</TableCell>
+            <TableCell className="tableCell">{"doctor_ssid"}</TableCell>
+            <TableCell className="tableCell">{"hiu_ssid"}</TableCell>
+            <TableCell className="tableCell">{"patient_ssid"}</TableCell>
+            <TableCell className="tableCell">{"status"}</TableCell>
 
           </TableRow>
         </TableHead>
@@ -159,7 +157,6 @@ const Datatable = () => {
           {data && data.consentObjs
 .map((row,ind) => (
             <TableRow key={ind}>
-              <TableCell className="tableCell">{row.consentID}</TableCell>
               <TableCell className="tableCell">{row.doctorSSID}</TableCell>
               <TableCell className="tableCell">{row.hiuSSID}</TableCell>
               <TableCell className="tableCell">{row.patientSSID}</TableCell>
@@ -168,22 +165,6 @@ const Datatable = () => {
                 <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>
               </TableCell>
               <TableCell className="tableCell">
-              <div className="cellAction">
-                {/* <Link to="/approveConsent" style={{ textDecoration: "none" }}> */}
-                {row.isApproved && <div className="disabledButton">{t("approve")}</div>}
-                {!row.isApproved && <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>{t("approve")}</div>}
-                {/* </Link> */}
-                { row.isApproved && <div
-                className="deleteButton"
-                onClick={(e)=>routeToRevokeConsent(ind)}>
-                {t("revoke")}
-                </div>}
-                { !row.isApproved && <div
-                className="disabledButton">
-                {t("revoke")}
-                </div>}
-                <div className="rejectButton" onClick={(e)=>routeToRejectConsent(ind)}>{t("reject")}</div>
-            </div>
               </TableCell>
             </TableRow>
           ))}

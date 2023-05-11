@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
-import { useNavigate } from "react-router-dom";
 import './navbar.scss'
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import DropdownMenu from './dropDownMenu';
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./LanguageSelect.jsx";
 
 const Navbar = () => {
-  // const { dispatch } = useContext(DarkModeContext);
-  const [notifications, setNotifications] = useState(localStorage.getItem("notifications"));
-  const menuItems = ['Notification 1', 'Notification 2', 'Notification 3',"Clear All"]; // Replace this with your actual menu items
+  const [notifications, setNotifications] = useState(JSON.parse(localStorage.getItem("notifications")) || []);
   const { t } = useTranslation();
   
   useEffect(()=>{
-    setNotifications(localStorage.getItem("notifications"));
     const handleStorage = () => {
-      setNotifications(localStorage.getItem("notifications"));
+      setNotifications(JSON.parse(localStorage.getItem("notifications")) || []);
     }
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
@@ -38,17 +26,19 @@ const Navbar = () => {
         <div className="item">
           <LanguageOutlinedIcon className="icon" />
           <LanguageSelect />
+
         </div>
-        
-        <div className="items">
+
+        {/* <div className="items"> */}
           {/* <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
           </div> */}
           <div className="item">
-            <FullscreenExitOutlinedIcon className="icon" />
+            {/* <FullscreenExitOutlinedIcon className="icon" /> */}
+            <DropdownMenu menuItems={notifications} />
+
           </div>
-          <DropdownMenu menuItems={menuItems} />
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
@@ -64,7 +54,7 @@ const Navbar = () => {
             />
           </div>
        
-      </div>
+      {/* </div> */}
     </div>
     </div>
     </div>

@@ -16,9 +16,12 @@ import img from '../framework-logo.png';
 import './otp.css';
 import { height } from '@mui/system';
 import { setAuthToken } from './setAuthToken';
+import { useTranslation } from "react-i18next";
+
 function App() {
     let navigate = useNavigate(); 
     const location = useLocation();
+    const { t } = useTranslation();
     let registerationDetails = location.state;
     // console.log(location.state);
     const routeToDashboard = (e) =>{ 
@@ -62,7 +65,7 @@ function App() {
             <div className="text-center">
               {/* <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                 style={{width: '185px'}} alt="logo" /> */}
-              <h4 className="mt-1 mb-5 pb-1" >Enter the OTP sent to you to your phone number</h4>
+              <h4 className="mt-1 mb-5 pb-1" >{t("enter_the_otp")}</h4>
             </div>
 
 
@@ -94,7 +97,7 @@ function App() {
                     
                     }>Verify</button> */}
             <div className="text-center pt-1 mb-5 pb-1">
-              <MDBBtn className="mb-4 w-100 gradient-custom-2" onClick={routeToDashboard}>Verify</MDBBtn>
+              <MDBBtn className="mb-4 w-100 gradient-custom-2" onClick={routeToDashboard}>{t("verify")}</MDBBtn>
             </div>
 
            
@@ -107,8 +110,8 @@ function App() {
           <div className="gradient-custom-2 ">
 
             <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h1>Enter the OTP sent to you to your phone number</h1>
-              <p class="small mb-0">ABHA ID will be generated once otp is verified!
+                <h1>{t("enter_the_otp")}</h1>
+              <p class="small mb-0">{t("ssid_will_be_verified")}
               </p>
             </div>
 

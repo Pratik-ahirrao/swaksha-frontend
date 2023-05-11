@@ -18,27 +18,29 @@ import HealthAndSafetyOutlinedIcon from '@mui/icons-material/HealthAndSafetyOutl
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import Divider from '@mui/material/Divider';
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
 //   const { dispatch } = useContext(DarkModeContext);
+  const { t } = useTranslation();
   return (
     <div className="sidebar">
       <div className="top">
         <Link to="/dashboard" style={{ textDecoration: "none" }}>
-          <span className="logo">Swasthya Suraksha</span>
+          <span className="logo">{t("swasthya_suraksha")}</span>
         </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="title">{t("main")}</p>
           <li >
             <DashboardIcon className="icon" />
-            <span className='dashlist'>Dashboard</span>
+            <span className='dashlist'>{t("dashboard")}</span>
           </li>
           <Divider />
 
-          <p className="title">LISTS</p>
+          <p className="title">{t("lists")}</p>
           {/* <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
@@ -49,45 +51,45 @@ const Sidebar = () => {
           <Link to="/consents" style={{ textDecoration: "none" }}>
             <li>
             <CreditCardIcon className="icon" />
-            <span className='dashlist'>Consents</span>
+            <span className='dashlist'>{t("consents")}</span>
             </li>
           </Link>
 
-          <p className="title">EHR RECORDS</p>
+          <p className="title">{t("ehr_records")}</p>
           <Link to="/observation" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
-              <span className='dashlist'>Observation</span>
+              <span className='dashlist'>{t("observation")}</span>
             </li>
           </Link>
           <Link to="/condition" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
-              <span className='dashlist'>Condition</span>
+              <span className='dashlist'>{t("condition")}</span>
             </li>
           </Link>
           <Link to="/procedure" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
-              <span className='dashlist'>Procedure</span>
+              <span className='dashlist'>{t("procedure")}</span>
             </li>
           </Link>
           <Divider />
 
           
-          <p className="title">USER</p>
+          <p className="title">{t("user")}</p>
           
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
             <AccountCircleOutlinedIcon className="icon" />
-            <span className='dashlist'>Profile</span>
+            <span className='dashlist'>{t("profile")}</span>
             </li>
           </Link>
 
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
             <ExitToAppIcon className="icon" />
-            <span className='dashlist' >Logout</span>
+            <span className='dashlist' >{t("logout")}</span>
             </li>
           </Link>
         </ul>

@@ -20,6 +20,7 @@ import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import ViewListIcon from '@mui/icons-material/ViewList';
 
 const Sidebar = () => {
 //   const { dispatch } = useContext(DarkModeContext);
@@ -66,6 +67,21 @@ const Sidebar = () => {
             <span className='dashlist'> Create EHR Records</span>
             </li>
           </Link>
+
+          <Link to="/requestWithConsent" style={{ textDecoration: "none" }}>
+            <li>
+            <AccessibilityIcon className="icon" />
+            <span className='dashlist'>Request With Consent</span>
+            </li>
+          </Link>
+
+          <Link to="/fetchAllConsent" style={{ textDecoration: "none" }}>
+            <li>
+            <ViewListIcon className="icon" />
+            <span className='dashlist'>Fetch All Consents</span>
+            </li>
+          </Link>
+
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
