@@ -83,6 +83,7 @@
   "enter_the_otp": "Enter the OTP sent to you to your phone number",
   "verify": "Verify",
   "ssid_will_be_verified": "SSID will be generated once otp is verified!",
-  "clinic_app_for_patient": "Clinic app for patient"
+  "clinic_app_for_patient": "Clinic app for patient",
+  "consent_id": "Consent ID"
 }
   

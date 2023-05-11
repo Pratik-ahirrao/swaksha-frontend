@@ -83,6 +83,7 @@
     "enter_the_otp": "أدخل كلمة المرور لمرة واحدة التي تم إرسالها إليك على رقم هاتفك",
     "verify": "يؤكد",
     "ssid_will_be_verified": "سيتم إنشاء SSID بمجرد التحقق من otp!",
-    "clinic_app_for_patient": "تطبيق عيادة للمريض"
+    "clinic_app_for_patient": "تطبيق عيادة للمريض",
+    "consent_id": "معرف الموافقة"
   }
     

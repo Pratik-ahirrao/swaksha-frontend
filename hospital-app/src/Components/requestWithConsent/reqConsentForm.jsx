@@ -1,4 +1,4 @@
-import "./verifyConsentForm.scss";
+import "../verifyConsentForm/VerifyConsentForm";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -58,15 +58,9 @@ export default function FormPropsTextFields() {
       noValidate
       autoComplete="off"
     >
-    <h1 className="heading">Verify Consent</h1>
+    <h1 className="heading">Request With Consent</h1>
       <div>
-      <TextField
-          required
-          id="outlined-required"
-          label="Patient SSID"
-          type='text'
-        />
-        
+      
        
        <TextField
           required
@@ -79,12 +73,12 @@ export default function FormPropsTextFields() {
       
       <div className="approveButton">
 
-      <Button variant="contained" onClick={handleClick}>Verify</Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Button variant="contained" onClick={handleClick}>Request Data</Button>
+      {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           Consent Verified!!
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       </div>
       <div className="backbutton">
       <Button variant="contained" onClick={routeToDashboard} >Back</Button>

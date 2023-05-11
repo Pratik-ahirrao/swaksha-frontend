@@ -11,6 +11,7 @@ function App() {
     let navigate = useNavigate(); 
     let [ssid,setssid]=useState("");
     let [password, setpassword] = useState("");
+    localStorage.removeItem("user");
     const routeToSignup = () =>{ 
         let path = `/signup`; 
         navigate(path);

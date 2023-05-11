@@ -10,6 +10,10 @@ import VerifyConsent from './Components/verifyConsent';
 import { setAuthToken } from './Components/setAuthToken';
 import { RouteGuard } from './Components/RouteGuard';
 import CreateRecord from './Components/createEhrRecord/createRecord';
+import RequestWithConsent from './Components/requestWithConsent/reqConsent';
+import FetchAllConsent from './Components/fetchAllConsents/fetchConsents';
+
+
 function App() {
     
   const user = localStorage.getItem("user");
@@ -30,6 +34,8 @@ function App() {
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>
       <Route path="/verifyConsent" element={<RouteGuard><VerifyConsent /></RouteGuard>}/>
       <Route path="/createRecord" element={<RouteGuard><CreateRecord /></RouteGuard>}/>
+      <Route path="/requestWithConsent" element={<RouteGuard><RequestWithConsent /></RouteGuard>}/>
+      <Route path="/fetchAllConsent" element={<RouteGuard><FetchAllConsent /></RouteGuard>}/>
 
       </Routes>
       </BrowserRouter>
