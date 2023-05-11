@@ -4,10 +4,10 @@ import Backend from "i18next-xhr-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import translationEN from "../public/assets/locales/en/translation.json";
 import translationAR from "../public/assets/locales/ar/translation.json";
-import translationFR from "../public/assets/locales/fr/translation.json";
+import translationTA from "../public/assets/locales/ta/translation.json";
 
 const fallbackLng = ["en"];
-const availableLanguages = ["en", "ar", "fr"];
+const availableLanguages = ["en", "ar", "ta"];
 
 const resources = {
   en: {
@@ -16,8 +16,8 @@ const resources = {
   ar: {
     translation: translationAR
   },
-  fr: {
-    translation: translationFR
+  ta: {
+    translation: translationTA
   }
 };
 

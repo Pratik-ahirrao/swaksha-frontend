@@ -1,4 +1,9 @@
 {
-  "login": "Login"
+  "login": "Login",
+  "dont_have_an_account": "Don't have an account?",
+  "register": "Register",
+  "abha_id": "ABHA ID",
+  "password": "Password",
+  "login_with": "Log in with"
 }
   
