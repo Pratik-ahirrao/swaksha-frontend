@@ -39,12 +39,12 @@ const Sidebar = () => {
             <span className='dashlist'>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
-          <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          {/* <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
               <span className='dashlist'>Patient Records</span>
             </li>
-          </Link>
+          </Link> */}
         
           <Link to="/requestData" style={{ textDecoration: "none" }}>
             <li>

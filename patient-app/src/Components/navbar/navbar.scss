@@ -1,5 +1,5 @@
  .navbar {
-    height: 50px;
+    height: 67px;
     border-bottom: 0.5px solid rgb(231, 228, 228);
     display: flex;
     align-items: center;
@@ -45,6 +45,10 @@
   
           .icon {
             font-size: 20px;
+          }
+
+          .notifications{
+            font-family: sans-serif;
           }
   
           .avatar {

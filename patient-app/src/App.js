@@ -13,6 +13,7 @@ import { Component } from 'react';
 import Observation from './Components/viewRecord/observation';
 import Procedure from './Components/viewRecord/procedure';
 import Condition from './Components/viewRecord/condition';
+import "./styles.css";
 
 function App() {
   

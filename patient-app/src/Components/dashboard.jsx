@@ -77,11 +77,11 @@ function App(){
             <Sidebar />
             <div className='homeContainer'>
                 <Navbar />
-                <div className="listContainer">
+                {/* <div className="listContainer">
                     <div className="listTitle"></div>
                         <Table />
-                    </div>
-                </div>
+                </div> */}
+            </div>
         </div>
     )
 }
