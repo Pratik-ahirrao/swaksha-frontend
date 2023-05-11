@@ -12,6 +12,7 @@
     background: linear-gradient(135deg, #71B7E6, #9B59B6);
    /* # background: linear-gradient(to right, rgba(0,0,255,0), #03b1fc); */
 }
+
 .wrapper{
     margin-top: 40px;
 
@@ -21,6 +22,13 @@
     padding: 25px 30px;
     border-radius: 5px;
 }
+
+.wrapper  .iconlang{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    float: right;
+  }
 
 .wrapper .title{
     font-size: 25px;

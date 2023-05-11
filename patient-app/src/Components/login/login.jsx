@@ -8,6 +8,9 @@ import { useState, useEffect } from 'react';
 import "../setAuthToken.js";
 import { setAuthToken } from '../setAuthToken.js';
 import { useTranslation } from "react-i18next";
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import LanguageSelect from "../navbar/LanguageSelect.jsx";
+
 function App() {
     let navigate = useNavigate(); 
     let [ssid,setssid]=useState("");
@@ -42,8 +45,15 @@ function App() {
       }
 
   return (
+    <div>
+      <div className='iconlang'>
+      <LanguageOutlinedIcon  />
+        <LanguageSelect />
+      </div>
+  
+  
     <MDBContainer fluid className="p-3 my-5 h-custom">
-
+     
       <MDBRow>
 
         <MDBCol col='10' md='5'>
@@ -95,7 +105,7 @@ function App() {
 
      
 
-    </MDBContainer>
+    </MDBContainer></div>
   );
 }
 
