@@ -23,7 +23,7 @@ const Datatable = () => {
   useEffect(() => {
     console.log(authHeader())
     // fetch("https://dog.ceo/api/breeds/image/random/3")
-    axios.post("http://localhost:9001/patient/fetchConsents",{},{headers:authHeader()})
+    axios.post("http://localhost:9002/hospital/requests/fetchConsents",{},{headers:authHeader()})
     .then(response => {
         
         console.log(response)
@@ -34,111 +34,9 @@ const Datatable = () => {
        
   },[])
 
-  const routeToApproveConsent = (ind) =>{ 
-    let path = `/approveConsent`; 
-    // navigate(path);
-    //  console.log(ind);
-    navigate(path, {state: 
-            data.consentObjs[ind]
-            }
-            );
-    //         <Navigate 
-        
-    //           to= {{
-    //             pathname: path,
-    //             state: {data:data}
-    //           }}
-    //         />
-  }
 
-  const routeToRevokeConsent = (ind) =>{ 
 
-    const REVOKE_URL = "http://localhost:9001/patient/revokeConsent";
-    // let path = `/revokeConsent`; 
-    // navigate(path);
-    console.log(data)
-    let reqData = {};
-    reqData.consentID = data.consentObjs[ind].consentID;
-    reqData.reqSSID = data.SSID;
-     console.log("revoke", reqData);
-    // navigate(path, {state: 
-            // data.consentObjs[ind]
-            // }
-            // );
-    axios.post(
-      REVOKE_URL, reqData,{headers:authHeader()}
-    ).then(()=>
-    {
-    let path = `/consents`;
-    navigate(path);
-    window.location.reload();
 
-    })
-    //         <Navigate 
-        
-    //           to= {{
-    //             pathname: path,
-    //             state: {data:data}
-    //           }}
-    //         />
-  }
-
-  const routeToRejectConsent = (ind) =>{ 
-
-    const REVOKE_URL = "http://localhost:9001/patient/rejectConsent";
-    console.log(data)
-    let reqData = {};
-    reqData.consentID = data.consentObjs[ind].consentID;
-    reqData.reqSSID = data.SSID;
-     console.log("revoke", reqData);
-
-    axios.post(
-      REVOKE_URL, reqData,{headers:authHeader()}
-    ).then(()=>
-    {
-    let path = `/consents`;
-    navigate(path);
-    window.location.reload();
-    })
-}
-
-  const rows = [
-    {
-      Doctor_SSID: 1143165,
-      HIU_SSID: 15,
-      patient_SSID: 12,
-      initiated_dateTime: "2020-03-09",     
-      status: "Approved",
-    },
-    {
-        Doctor_SSID: 114355,
-        HIU_SSID: 14,
-        patient_SSID: 12,
-        initiated_dateTime: "2021-02-03",     
-        status: "Pending",
-    },
-    {
-        Doctor_SSID: 1143145,
-        HIU_SSID: 13,
-        patient_SSID: 12,
-        initiated_dateTime: "2022-04-03",     
-        status: "Approved",
-    },
-    {
-        Doctor_SSID: 1143195,
-        HIU_SSID: 1,
-        patient_SSID: 12,
-        initiated_dateTime: "2023-03-29",     
-        status: "Pending",
-    },
-    {
-        Doctor_SSID: 1143185,
-        HIU_SSID: 12,
-        patient_SSID: 12,
-        initiated_dateTime: "2018-09-01",     
-        status: "Approved",
-    },
-  ];
   return (
     <TableContainer component={Paper} className="table">
             <h1 className="heading">List of Consents</h1>
@@ -146,20 +44,25 @@ const Datatable = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">{"doctor_ssid"}</TableCell>
-            <TableCell className="tableCell">{"hiu_ssid"}</TableCell>
-            <TableCell className="tableCell">{"patient_ssid"}</TableCell>
-            <TableCell className="tableCell">{"status"}</TableCell>
-
+            <TableCell className="tableCell">{"Consent ID"}</TableCell>
+            <TableCell className="tableCell">{"Doctor SSID"}</TableCell>
+            <TableCell className="tableCell">{"Patient SSID"}</TableCell>
+            <TableCell className="tableCell">{"Data access start date"}</TableCell>
+            <TableCell className="tableCell">{"Data access end date"}</TableCell>
+            <TableCell className="tableCell">{"Consent End date"}</TableCell>
+            <TableCell className="tableCell">{"Status"}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data && data.consentObjs
 .map((row,ind) => (
             <TableRow key={ind}>
+              <TableCell className="tableCell">{row.consentID}</TableCell>
               <TableCell className="tableCell">{row.doctorSSID}</TableCell>
-              <TableCell className="tableCell">{row.hiuSSID}</TableCell>
               <TableCell className="tableCell">{row.patientSSID}</TableCell>
+              <TableCell className="tableCell">{row.dataAccessStartDate}</TableCell>
+              <TableCell className="tableCell">{row.dataAccessEndDate}</TableCell>
+              <TableCell className="tableCell">{row.consentEndDate}</TableCell>
               <TableCell className="tableCell">
 
                 <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>

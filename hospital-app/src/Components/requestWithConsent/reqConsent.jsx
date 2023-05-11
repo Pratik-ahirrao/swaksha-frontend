@@ -1,6 +1,7 @@
 import React from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import { useNavigate } from "react-router-dom";
+
 import '../dashboard.scss'
 import Sidebar from '../sidebar/Sidebar';
 import Navbar from '../navbar/Navbar';
