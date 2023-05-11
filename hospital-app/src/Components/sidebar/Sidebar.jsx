@@ -20,7 +20,7 @@ import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-
+import ViewListIcon from '@mui/icons-material/ViewList';
 const Sidebar = () => {
 //   const { dispatch } = useContext(DarkModeContext);
   return (
@@ -64,6 +64,12 @@ const Sidebar = () => {
             <li>
             <AddCircleOutlineIcon className="icon" />
             <span className='dashlist'> Create EHR Records</span>
+            </li>
+          </Link>
+          <Link to="/showRecord" style={{ textDecoration: "none" }}>
+            <li>
+            <ViewListIcon className="icon" />
+            <span className='dashlist'> Show EHR Records</span>
             </li>
           </Link>
           <p className="title">USER</p>

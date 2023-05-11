@@ -1,4 +1,4 @@
-import "./datatable.scss";
+import "../datatable/datatable.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,7 +14,7 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const Datatable = () => {
+const RecordList = () => {
   let navigate = useNavigate(); 
 
   let [data, setData] = useState(null);
@@ -140,17 +140,18 @@ const Datatable = () => {
   ];
   return (
     <TableContainer component={Paper} className="table">
-            <h1 className="heading">Consents Lists</h1>
+            <h1 className="heading">Show EHR Records</h1>
 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Doctor SSID</TableCell>
-            <TableCell className="tableCell">HIU SSID</TableCell>
             <TableCell className="tableCell">Patient SSID</TableCell>
+            <TableCell className="tableCell">Record Type</TableCell>
+            <TableCell className="tableCell">Observation Type</TableCell>
             {/* <TableCell className="tableCell">Initiated DateTime</TableCell> */}
-            <TableCell className="tableCell">Status</TableCell>
-            <TableCell className="tableCell">Action</TableCell>
+            <TableCell className="tableCell">Observation Value</TableCell>
+            <TableCell className="tableCell">Condition Code</TableCell>
+            <TableCell className="tableCell">Procedure Code</TableCell>
 
           </TableRow>
         </TableHead>
@@ -167,24 +168,7 @@ const Datatable = () => {
 
                 <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>
               </TableCell>
-              <TableCell className="tableCell">
-              <div className="cellAction">
-                {/* <Link to="/approveConsent" style={{ textDecoration: "none" }}> */}
-                {row.isApproved && <div className="disabledButton">Approve</div>}
-                {!row.isApproved && <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>Approve</div>}
-                {/* </Link> */}
-                { row.isApproved && <div
-                className="deleteButton"
-                onClick={(e)=>routeToRevokeConsent(ind)}>
-                Revoke
-                </div>}
-                { !row.isApproved && <div
-                className="disabledButton">
-                Revoke
-                </div>}
-                <div className="rejectButton" onClick={(e)=>routeToRejectConsent(ind)}>Reject</div>
-            </div>
-              </TableCell>
+              
             </TableRow>
           ))}
           
@@ -194,4 +178,4 @@ const Datatable = () => {
   );
 };
 
-export default Datatable;
+export default RecordList;

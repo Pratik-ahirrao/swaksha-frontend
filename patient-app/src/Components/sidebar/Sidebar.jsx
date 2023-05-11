@@ -53,7 +53,7 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <p className="title">EHR RECORDS</p>
+          {/* <p className="title">EHR RECORDS</p>
           <Link to="/observation" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
@@ -71,7 +71,7 @@ const Sidebar = () => {
               <HealthAndSafetyOutlinedIcon className="icon" />
               <span className='dashlist'>Procedure</span>
             </li>
-          </Link>
+          </Link> */}
           <Divider />
 
           

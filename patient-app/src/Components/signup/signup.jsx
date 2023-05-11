@@ -73,7 +73,7 @@ function App(){
               "city": city,
               "state": state,
               "date": dob,
-              "cm_pin_password": cmPinPassword,
+              "cmPinPassword": cmPinPassword,
               "cm_pin_confirm_password": cmPinConfirmPassword,
               "password": password,
               "confirm_password": confirmPassword,
