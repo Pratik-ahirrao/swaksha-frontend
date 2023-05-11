@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import { useNavigate } from "react-router-dom";
 import './navbar.scss'
@@ -13,16 +13,39 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from "react";
 import DropdownMenu from './dropDownMenu';
-const Navbar = () => {
-    // const { dispatch } = useContext(DarkModeContext);
+// const Navbar = () => {
+//     // const { dispatch } = useContext(DarkModeContext);
 
    
-    const menuItems = ['Notification 1', 'Notification 2', 'Notification 3',"Clear All"]; // Replace this with your actual menu items
+//     const menuItems = ['Notification 1', 'Notification 2', 'Notification 3',"Clear All"]; // Replace this with your actual menu items
 
+// import { useTranslation } from "react-i18next";
+// import LanguageSelect from "./LanguageSelect.jsx";
+
+const Navbar = () => {
+  // const { dispatch } = useContext(DarkModeContext);
+  const [notifications, setNotifications] = useState(localStorage.getItem("notifications"));
+  const { t } = useTranslation();
   
-    return (
-      <div className="navbar">
-          <div className="wrapper">
+  useEffect(()=>{
+    setNotifications(localStorage.getItem("notifications"));
+    const handleStorage = () => {
+      setNotifications(localStorage.getItem("notifications"));
+    }
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
+  return (
+    <div className="navbar">
+        <div className="wrapper">
+      
+      <div className="items">
+        <div className="item">
+          <LanguageOutlinedIcon className="icon" />
+          <LanguageSelect />
+          English
+        </div>
         
         <div className="items">
           <div className="item">
@@ -71,10 +94,32 @@ const Navbar = () => {
               className="avatar"
             />
           </div>
+        <div className="item">
+          <FullscreenExitOutlinedIcon className="icon" />
+        </div>
+        <div className="item">
+          <NotificationsNoneOutlinedIcon className="icon" />
+          <div className="counter">{notifications}</div>
+        </div>
+        <div className="item">
+          <ChatBubbleOutlineOutlinedIcon className="icon" />
+          <div className="counter">2</div>
+        </div>
+        <div className="item">
+          <ListOutlinedIcon className="icon" />
+        </div>
+        <div className="item">
+          <img
+            src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            className="avatar"
+          />
         </div>
       </div>
-      </div>
-    );
-  };
-  
-  export default Navbar;
+    </div>
+    </div>
+    </div>
+  );
+};
+
+export default Navbar;
