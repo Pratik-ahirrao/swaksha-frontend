@@ -84,7 +84,7 @@ function App() {
           {/* <div className="divider d-flex align-items-center my-4">
             <p className="text-center fw-bold mx-3 mb-0">Or</p>
           </div> */}
-          <MDBInput wrapperClass='mb-4' label={t("abha_id")} id='formControlLg' type='email' name='myid' onChange={(e)=>{setssid(e.target.value)}} size="lg" />
+          <MDBInput wrapperClass='mb-4' label={t("ssid")} id='formControlLg' type='email' name='myid' onChange={(e)=>{setssid(e.target.value)}} size="lg" />
           <MDBInput wrapperClass='mb-4' label={t("password")} id='second' type='password' name='password' onChange={(e)=>{setpassword(e.target.value)}}size="lg"/>
 
           {/* <div className="d-flex justify-content-between mb-4">

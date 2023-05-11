@@ -12,10 +12,11 @@ import axios from "axios";
 import authHeader from "../../services/auth-header";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 const Datatable = () => {
   let navigate = useNavigate(); 
+  const { t } = useTranslation();
 
   let [data, setData] = useState(null);
 
@@ -140,17 +141,16 @@ const Datatable = () => {
   ];
   return (
     <TableContainer component={Paper} className="table">
-            <h1 className="heading">Consents Lists</h1>
+            <h1 className="heading">{t("consents_list")}</h1>
 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Doctor SSID</TableCell>
-            <TableCell className="tableCell">HIU SSID</TableCell>
-            <TableCell className="tableCell">Patient SSID</TableCell>
-            {/* <TableCell className="tableCell">Initiated DateTime</TableCell> */}
-            <TableCell className="tableCell">Status</TableCell>
-            <TableCell className="tableCell">Action</TableCell>
+            <TableCell className="tableCell">{t("docter_ssid")}</TableCell>
+            <TableCell className="tableCell">{t("hiu_ssid")}</TableCell>
+            <TableCell className="tableCell">{t("patient_ssid")}</TableCell>
+            <TableCell className="tableCell">{t("status")}</TableCell>
+            <TableCell className="tableCell">{t("action")}</TableCell>
 
           </TableRow>
         </TableHead>
@@ -162,7 +162,6 @@ const Datatable = () => {
                
               <TableCell className="tableCell">{row.hiuSSID}</TableCell>
               <TableCell className="tableCell">{row.patientSSID}</TableCell>
-              {/* <TableCell className="tableCell">{row.requestInitiatedDate}</TableCell> */}
               <TableCell className="tableCell">
 
                 <span className={`status ${row.isApproved ? "Approved" : "Pending"}`}>{row.isApproved ? "Approved" : "Pending"}</span>
@@ -170,19 +169,19 @@ const Datatable = () => {
               <TableCell className="tableCell">
               <div className="cellAction">
                 {/* <Link to="/approveConsent" style={{ textDecoration: "none" }}> */}
-                {row.isApproved && <div className="disabledButton">Approve</div>}
-                {!row.isApproved && <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>Approve</div>}
+                {row.isApproved && <div className="disabledButton">{t("approve")}</div>}
+                {!row.isApproved && <div className="viewButton" onClick={(e)=>routeToApproveConsent(ind)}>{t("approve")}</div>}
                 {/* </Link> */}
                 { row.isApproved && <div
                 className="deleteButton"
                 onClick={(e)=>routeToRevokeConsent(ind)}>
-                Revoke
+                {t("revoke")}
                 </div>}
                 { !row.isApproved && <div
                 className="disabledButton">
-                Revoke
+                {t("revoke")}
                 </div>}
-                <div className="rejectButton" onClick={(e)=>routeToRejectConsent(ind)}>Reject</div>
+                <div className="rejectButton" onClick={(e)=>routeToRejectConsent(ind)}>{t("reject")}</div>
             </div>
               </TableCell>
             </TableRow>

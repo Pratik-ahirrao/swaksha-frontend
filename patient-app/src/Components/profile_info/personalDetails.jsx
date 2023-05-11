@@ -19,9 +19,11 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { useTranslation } from "react-i18next";
 
 export default function FormPropsTextFields() {
     let navigate = useNavigate(); 
+    const { t } = useTranslation();
 
     const routeToDashboard = () =>{ 
         let path = `/dashboard`; 
@@ -41,32 +43,32 @@ export default function FormPropsTextFields() {
       noValidate
       autoComplete="off"
     >
-    <h2 className="heading">Personal Details</h2>
+    <h2 className="heading">{t("personal_details")}</h2>
     <Divider />
 
       <div className="list">
         <TextField
           id="outlined-required"
-          label="First Name"
+          label={t("first_name")}
           type='text'
           defaultValue={"Jane"}
         />
 
         <TextField
           id="outlined-required"
-          label="Last Name"
+          label={t("last_name")}
           type='text'
           defaultValue={"Smith"}
         />
         <TextField
           id="outlined-required"
-          label="Email"
+          label={t("email")}
           type='text'
           defaultValue={"example@org.com"}
         />
         <TextField
           id="outlined-required"
-          label="Phone Number"
+          label={t("phone_number")}
           type='number'
           defaultValue={"123456789"}
         />
@@ -75,7 +77,7 @@ export default function FormPropsTextFields() {
        <TextField
           
           id="outlined-required"
-          label="Date Of Birth"
+          label={t("dob")}
           defaultValue="2017-05-24"
           InputLabelProps={{ shrink: true }}
           type='date'
@@ -86,19 +88,19 @@ export default function FormPropsTextFields() {
       <div>
       <TextField
           id="outlined-required"
-          label="Address"
+          label={t("address")}
           type='text'
           defaultValue={"Bhosri"}
         />
          <TextField
           id="outlined-required"
-          label="City"
+          label={t("city")}
           type='text'
           defaultValue={"Pune"}
         />
          <TextField
           id="outlined-required"
-          label="State"
+          label={t("state")}
           type='text'
           defaultValue={"Assam"}
         />
@@ -106,16 +108,16 @@ export default function FormPropsTextFields() {
       </div>
       <div>
       <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+      <FormLabel id="demo-row-radio-buttons-group-label">{t("gender")}</FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
         defaultValue="female"
       >
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
+        <FormControlLabel value="female" control={<Radio />} label={t("female")} />
+        <FormControlLabel value="male" control={<Radio />} label={t("male")} />
+        <FormControlLabel value="other" control={<Radio />} label={t("other")} />
        
       </RadioGroup>
     </FormControl>
@@ -124,7 +126,7 @@ export default function FormPropsTextFields() {
       </div>
       <div className="approveButton">
 
-      <Button variant="contained" onClick={routeToDashboard}>Save Changes</Button>
+      <Button variant="contained" onClick={routeToDashboard}>{t("save_changes")}</Button>
       </div>
       
 

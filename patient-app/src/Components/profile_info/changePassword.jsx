@@ -14,9 +14,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
 import Divider from '@mui/material/Divider';
+import { useTranslation } from "react-i18next";
 
 export default function FormPropsTextFields() {
     let navigate = useNavigate(); 
+    const { t } = useTranslation();
 
     const routeToDashboard = () =>{ 
         let path = `/dashboard`; 
@@ -33,13 +35,13 @@ export default function FormPropsTextFields() {
       noValidate
       autoComplete="off"
     >
-    <h2 className="heading">Change Password</h2>
+    <h2 className="heading">{t("change_password")}</h2>
     <Divider />
       <div className="list">
         <TextField
           required
           id="outlined-required"
-          label="Current Password"
+          label={t("current_password")}
           type='text'
         />
       </div>
@@ -47,23 +49,21 @@ export default function FormPropsTextFields() {
       <TextField
           required
           id="outlined-required"
-          label="New Password"
+          label={t("new_password")}
           type='text'
         />
 
         <TextField
           required
           id="outlined-required"
-          label="Confirm New Password"
+          label={t("confirm_new_password")}
           type='text'
         />
       </div>
       <div className="approveButton">
 
-      <Button variant="contained" onClick={routeToDashboard}>Update</Button>
+      <Button variant="contained" onClick={routeToDashboard}>{t("update")}</Button>
       </div>
-     
-
     </Box>
   );
 }

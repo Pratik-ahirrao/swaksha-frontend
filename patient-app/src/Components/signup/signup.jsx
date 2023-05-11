@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import LanguageSelect from "../navbar/LanguageSelect.jsx";
+import { useTranslation } from "react-i18next";
 
 function useRadioButtons(name) {
   const [value, setState] = useState(null);
@@ -38,6 +39,7 @@ function App(){
     let [confirmPassword, setconfirmPassword] = useState("");
     // let [gender, setGender] = useState("");
     const [genderValue, genderInputProps] = useRadioButtons("gender");
+    const { t } = useTranslation();
 
 
     let navigate = useNavigate(); 
@@ -109,79 +111,79 @@ function App(){
               <LanguageOutlinedIcon  />
               <LanguageSelect />
             </div>
-        <div className="title">Registration</div>
+        <div className="title">{t("registration")}</div>
         <form action="#">
           <div className="user-details">
             <div className="input-box">
-              <span className="details">First Name</span>
-              <input type="text" id="first_name" placeholder="Enter your First name" name='first_name' onChange={(e)=>{setName(e.target.value)}} required />
+              <span className="details">{t("first_name")}</span>
+              <input type="text" id="first_name" placeholder={t("enter_your_first_name")} name='first_name' onChange={(e)=>{setName(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">Last Name</span>
-              <input type="text" placeholder="Enter your Last name" name='last_name' onChange={(e)=>{setLastName(e.target.value)}} required />
+              <span className="details">{t("last_name")}</span>
+              <input type="text" placeholder={t("enter_your_last_name")} name='last_name' onChange={(e)=>{setLastName(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">E-Mail</span>
-              <input type="email" placeholder="Enter your email" name='email' onChange={(e)=>{setEmail(e.target.value)}} required />
+              <span className="details">{t("email")}</span>
+              <input type="email" placeholder={t("enter_your_email")} name='email' onChange={(e)=>{setEmail(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">Phone Number</span>
-              <input type="number" placeholder="Enter your number" name='phone_number' onChange={(e)=>{setPhone_number(e.target.value)}} required />
+              <span className="details">{t("phone_number")}</span>
+              <input type="number" placeholder={t("enter_your_number")} name='phone_number' onChange={(e)=>{setPhone_number(e.target.value)}} required />
             </div>
 
             <div className="input-box">
-              <span className="details">Address</span>
-              <input type="text" placeholder="Enter your Address" name='address' onChange={(e)=>{setAddress(e.target.value)}} required />
+              <span className="details">{t("address")}</span>
+              <input type="text" placeholder={t("enter_your_address")} name='address' onChange={(e)=>{setAddress(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">City</span>
-              <input type="text" placeholder="Enter your City"  name='city' onChange={(e)=>{setCity(e.target.value)}} required />
+              <span className="details">{t("city")}</span>
+              <input type="text" placeholder={t("enter_your_city")}  name='city' onChange={(e)=>{setCity(e.target.value)}} required />
             </div> 
             <div className="input-box">
-              <span className="details">State</span>
-              <input type="text" placeholder="Enter your State" name='state' onChange={(e)=>{setState(e.target.value)}} required />
+              <span className="details">{t("state")}</span>
+              <input type="text" placeholder={t("enter_your_state")} name='state' onChange={(e)=>{setState(e.target.value)}} required />
             </div>
 
             <div className="input-box">
-              <span className="details">DOB</span>
+              <span className="details">{t("dob1")}</span>
               <input type="date" name='date' onChange={(e)=>{setDob(e.target.value)}} required />
             </div>
             
             <div className="input-box">
-              <span className="details">CM Pin</span>
-              <input type="password" placeholder="Enter your CM pin" name='cm_pin_password'  onChange={(e)=>{setcmPinPassword(e.target.value)}} required />
+              <span className="details">{t("cm_pin")}</span>
+              <input type="password" placeholder={t("enter_your_cm_pin")} name='cm_pin_password'  onChange={(e)=>{setcmPinPassword(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">Confirm CM Pin</span>
-              <input type="password" placeholder="Confirm your CM pin" name='cm_pin_confirm_password' onChange={(e)=>{setcmPinConfirmPassword(e.target.value)}}  required />
+              <span className="details">{t("confirm_cm_pin")}</span>
+              <input type="password" placeholder={"confirm_your_cm_pin"} name='cm_pin_confirm_password' onChange={(e)=>{setcmPinConfirmPassword(e.target.value)}}  required />
             </div>
 
             <div className="input-box">
-              <span className="details">Password</span>
+              <span className="details">{t("password")}</span>
               <input type="password" placeholder="Enter your Password" name='password' onChange={(e)=>{setPassword(e.target.value)}} required />
             </div>
             <div className="input-box">
-              <span className="details">Confirm Password</span>
-              <input type="password" placeholder="Confirm your Password" name='confirm_password' onChange={(e)=>{setconfirmPassword(e.target.value)}} required />
+              <span className="details">{t("confirm_password")}</span>
+              <input type="password" placeholder={t("confirm_your_password")} name='confirm_password' onChange={(e)=>{setconfirmPassword(e.target.value)}} required />
             </div>
           </div>
           <div className="gender-details">
-            <input type="radio" name="gender" value="Male" checked={genderValue=="Male"} {...genderInputProps} id="dot-1" />
-            <input type="radio" name="gender" value="Female" checked={genderValue=="Female"} {...genderInputProps} id="dot-2" />
-            <input type="radio" name="gender" value="Prefer Not to say" checked={genderValue=="Prefer Not to say"} {...genderInputProps}  id="dot-3" />
-            <span className="gender-title">Gender</span>
+            <input type="radio" name="gender" value={t("male")} checked={genderValue=="Male"} {...genderInputProps} id="dot-1" />
+            <input type="radio" name="gender" value={t("female")} checked={genderValue=="Female"} {...genderInputProps} id="dot-2" />
+            <input type="radio" name="gender" value={t("prefer_not_to_say")} checked={genderValue=="Prefer Not to say"} {...genderInputProps}  id="dot-3" />
+            <span className="gender-title">{t("gender")}</span>
             <div className="category">
               <label htmlFor="dot-1">
                 <span className="dot one" />
-                <span className="gender">Male</span>
+                <span className="gender">{t("male")}</span>
               </label>
               <label htmlFor="dot-2">
                 <span className="dot two" />
-                <span className="gender">Female</span>
+                <span className="gender">{t("female")}</span>
               </label>
               <label htmlFor="dot-3">
                 <span className="dot three" />
-                <span className="gender">Prefer Not to say</span>
+                <span className="gender">{t("prefer_not_to_say")}</span>
               </label>
             </div>        
           </div>
@@ -189,7 +191,7 @@ function App(){
             <input type="submit" onClick={(e)=>{routeToVerifyOtp(e)}} defaultValue="Register" />
           </div>
         </form>
-        <p className="small fw-bold mt-2 pt-1 mb-2">Already have an account? <a href="" className="link-danger" onClick={routeToLogin} >Login</a></p>
+        <p className="small fw-bold mt-2 pt-1 mb-2">{t("already_have_an_account")}<a href="" className="link-danger" onClick={routeToLogin} >{t("login")}</a></p>
 
       </div>
         </div>
