@@ -35,12 +35,8 @@ function App() {
       <Route path="/requestData/details" element={<RouteGuard><RecordDetails /></RouteGuard>}/>
       <Route path="/verifyConsent" element={<RouteGuard><VerifyConsent /></RouteGuard>}/>
       <Route path="/createRecord" element={<RouteGuard><CreateRecord /></RouteGuard>}/>
-<<<<<<< HEAD
-      <Route path="/showRecord" element={<RouteGuard><ShowRecord /></RouteGuard>}/>
-=======
       <Route path="/requestWithConsent" element={<RouteGuard><RequestWithConsent /></RouteGuard>}/>
       <Route path="/fetchAllConsent" element={<RouteGuard><FetchAllConsent /></RouteGuard>}/>
->>>>>>> 345172be80e995f6a8fa68a2932d70ba04a48273
 
       
       </Routes>

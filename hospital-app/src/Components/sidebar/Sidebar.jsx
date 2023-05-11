@@ -21,10 +21,6 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ViewListIcon from '@mui/icons-material/ViewList';
-<<<<<<< HEAD
-=======
-
->>>>>>> 345172be80e995f6a8fa68a2932d70ba04a48273
 const Sidebar = () => {
 //   const { dispatch } = useContext(DarkModeContext);
   return (

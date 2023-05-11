@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import { useNavigate } from "react-router-dom";
 import './navbar.scss'
@@ -10,9 +10,17 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import DropdownMenu from './dropDownMenu';
+
 const Navbar = () => {
-    // const { dispatch } = useContext(DarkModeContext);
-    const menuItems = ['Notification 1', 'Notification 2', 'Notification 3',"Clear All"]; // Replace this with your actual menu items
+  const [notifications, setNotifications] = useState(JSON.parse(localStorage.getItem("notifications")) || []);
+  
+  useEffect(()=>{
+    const handleStorage = () => {
+      setNotifications(JSON.parse(localStorage.getItem("notifications")) || []);
+    }
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
 
     return (
       <div className="navbar">
@@ -31,7 +39,7 @@ const Navbar = () => {
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
           </div> */}
-          <DropdownMenu menuItems={menuItems} />
+          <DropdownMenu menuItems={notifications} />
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
