@@ -55,11 +55,7 @@ const Sidebar = () => {
             </li>
           </Link>
 
-<<<<<<< HEAD
-          {/* <p className="title">EHR RECORDS</p>
-=======
           <p className="title">{t("ehr_records")}</p>
->>>>>>> 345172be80e995f6a8fa68a2932d70ba04a48273
           <Link to="/observation" style={{ textDecoration: "none" }}>
             <li>
               <HealthAndSafetyOutlinedIcon className="icon" />
@@ -77,7 +73,7 @@ const Sidebar = () => {
               <HealthAndSafetyOutlinedIcon className="icon" />
               <span className='dashlist'>{t("procedure")}</span>
             </li>
-          </Link> */}
+          </Link>
           <Divider />
 
           

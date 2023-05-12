@@ -3,8 +3,9 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './navbar.scss';
-import { Button, Popover, List, ListItem, ListSubheader, ListItemButton, ListItemText } from "@mui/material";
+import { Button, Popover, List, ListItem, ListSubheader, ListItemButton, ListItemText} from "@mui/material";
 import { useTranslation } from "react-i18next";
+import NotificationListItem from './notificationListItem';
 
 const DropdownMenu = ({ menuItems }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -17,11 +18,11 @@ const DropdownMenu = ({ menuItems }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   return (
     <div className="item">
       <NotificationsNoneOutlinedIcon className="icon" onClick={handleClick} />
-      {menuItems.length > 0 && <div className="counter">{menuItems.length-1}</div>}
+      {menuItems.length > 0 && <div className="counter">{menuItems.length}</div>}
       <Popover
         open={!!anchorEl}
         anchorEl={anchorEl}
@@ -37,7 +38,9 @@ const DropdownMenu = ({ menuItems }) => {
       >
         {menuItems.map((item, index) => (
           <MenuItem key={index} onClick={handleClose}>
-            {item}
+            <NotificationListItem
+            title={item.title}
+            body={item.body} />
           </MenuItem>
         ))}
       {/* </Menu> */}</Popover>

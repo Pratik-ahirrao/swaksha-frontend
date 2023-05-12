@@ -16,6 +16,7 @@ function App() {
     let [ssid,setssid]=useState("");
     let [password, setpassword] = useState("");
     localStorage.removeItem("user");
+    localStorage.removeItem("notifications");
     const { t } = useTranslation();
     const routeToSignup = () =>{ 
         let path = `/signup`; 
