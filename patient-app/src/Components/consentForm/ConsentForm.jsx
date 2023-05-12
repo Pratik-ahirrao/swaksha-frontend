@@ -48,6 +48,7 @@ export default function FormPropsTextFields() {
      // data.patientSSID=consentDetails.patientSSID;
       data.consentObj.dataAccessStartDate=dataAccessStartDate;
       data.consentObj.dataAccessEndDate=dataAccessEndDate;
+      data.consentObj.consentEndDate=consentEndDate;
       data.encPin=encPin;
       console.log(data)
       axios.post(
@@ -121,7 +122,7 @@ export default function FormPropsTextFields() {
           label={t("consent_end_date")}
         //  defaultValue="03/04/2023"
           InputLabelProps={{ shrink: true, required: true }}
-          onChange={(e)=>{setDataAccessEndDate(e.target.value)}}
+          onChange={(e)=>{setconsentEndDate(e.target.value)}}
           type='date'
         />
     	</div>
