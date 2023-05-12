@@ -7,6 +7,7 @@ import axios from "axios";
 import authHeader from '../services/auth-header';
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { useEffect } from "react"
 
 const firebaseConfig = {
     apiKey: "AIzaSyCCxB1aAQLHWk1vAQPS_YVdBujy05VkMCM",
@@ -17,9 +18,10 @@ const firebaseConfig = {
     appId: "1:476499142717:web:bc85113a0876ed39bca254",
     measurementId: "G-D7VXY3WK2F"
   };
-  const fapp = initializeApp(firebaseConfig);
-  const messaging = getMessaging(fapp);
-  
+const fapp = initializeApp(firebaseConfig);
+const messaging = getMessaging(fapp);
+
+const consents = () => {
   getToken(messaging, {
     vapidKey:
       "BNKN9aTqoR6lBcRhl0e3PY_-bFsX1sC5Seyi0VtM7FxTGPvq5TY9mzhOrVL93IcgryXJ01ca3nry_HQ0vRqGCJQ",
@@ -65,8 +67,6 @@ const firebaseConfig = {
     window.dispatchEvent(new Event('storage'));
     new Notification(payload.notification.title, options);
   });
-
-const consents = () => {
   return (
     <div className="home">
     <Sidebar />
