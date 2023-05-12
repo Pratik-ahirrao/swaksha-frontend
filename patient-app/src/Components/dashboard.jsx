@@ -9,7 +9,7 @@ import axios from "axios";
 import authHeader from '../services/auth-header';
 import { componentDidMount, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getMessaging, getToken, onMessage} from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCxB1aAQLHWk1vAQPS_YVdBujy05VkMCM",
@@ -68,6 +68,18 @@ function App(){
         window.dispatchEvent(new Event('storage'));
         new Notification(payload.notification.title, options);
       });
+      
+      window.addEventListener('message', (event) => {
+  	if (event.data && event.data.type === 'firebase-messaging') {
+  	const payload = event.data.payload;
+    	let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    	notifications.push(payload.notification);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        window.dispatchEvent(new Event('storage'));
+  	}
+	});
+
+      
     })
     return (
         <div className='home'>

@@ -67,6 +67,17 @@ const consents = () => {
     window.dispatchEvent(new Event('storage'));
     new Notification(payload.notification.title, options);
   });
+  
+  window.addEventListener('message', (event) => {
+  	if (event.data && event.data.type === 'firebase-messaging') {
+  	const payload = event.data.payload;
+    	let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    	notifications.push(payload.notification);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        window.dispatchEvent(new Event('storage'));
+  	}
+	});
+  
   return (
     <div className="home">
     <Sidebar />

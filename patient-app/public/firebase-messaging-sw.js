@@ -26,5 +26,15 @@ messaging.onBackgroundMessage(function(payload) {
     body: payload.notification.body,
   };
 
+  self.clients.matchAll().then((clients) => {
+  clients.forEach((client) => {
+    client.postMessage({
+      type: 'firebase-messaging',
+      payload: payload,
+    });
+  });
+  });
+	
+
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
